@@ -1,5 +1,7 @@
-# test
-it's just starting
-![first img](https://github.com/realgeoffrey/realgeoffrey.github.io/raw/master/readmeImg/github-mark.png)
-![first img](https://raw.github.com/realgeoffrey/realgeoffrey.github.io/master/readmeImg/github-mark.png)
-![first img](./readmeImg/github-mark.png)
+# Act like a blog?
+
+It's just starting
+
+![first img](https://github.com/realgeoffrey/realgeoffrey.github.io/raw/master/images/github-mark.png)
+![first img](https://raw.github.com/realgeoffrey/realgeoffrey.github.io/master/images/github-mark.png)
+![first img](./images/github-mark.png)

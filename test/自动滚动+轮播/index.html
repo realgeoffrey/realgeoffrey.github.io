@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <link rel="shortcut icon" type="image/ico" href="../favicon.ico">
+    <title>自动滚动+轮播</title>
+    <link href="../cssReset.css" type="text/css" rel="stylesheet">
+    <style>
+        /* 自动滚动*/
+        .test_wrap {
+            width: 200px;
+            height: 100px;
+            border: 1px solid red;
+
+            overflow: hidden;
+            *position: relative;
+        }
+        /*/自动滚动*/
+    </style>
+    <style>
+        /* 轮播*/
+        .test_slide_holder {
+            width: 100px;
+            height: 100px;
+            overflow: hidden;
+        }
+        .test_slide_list {
+            width: 100px;
+            height: 100px;
+            zoom: 1;
+        }
+        .test_slide_list:after {
+            display: block;
+            clear: both;
+            content: ".";
+            visibility: hidden;
+            height: 0;
+        }
+        .test_slide_list li {
+            width: 200px;
+            height: 200px;
+            float: left;
+            _display: inline;
+        }
+        .test_slide_nav {
+            zoom: 1;
+        }
+        .test_slide_nav:after {
+            display: block;
+            clear: both;
+            content: ".";
+            visibility: hidden;
+            height: 0;
+        }
+        .test_slide_nav li {
+            border-radius: 10px;
+            background-color: #908483;
+            cursor: pointer;
+            margin-right: 8px;
+            height: 12px;
+            width: 12px;
+            float: left;
+            _display: inline;
+        }
+        .test_slide_nav li.cur {
+            background-color: #000;
+        }
+        /*/轮播*/
+    </style>
+</head>
+<body>
+<!-- 自动滚动-->
+<div class="test_wrap">
+    <ul id="j-autoroll">
+        <li>
+            1.内容
+        </li>
+        <li>
+            2.内容
+        </li>
+        <li>
+            3.内容
+        </li>
+        <li>
+            4.内容
+        </li>
+        <li>
+            5.内容
+        </li>
+    </ul>
+</div>
+<!--/自动滚动-->
+<!--轮播-->
+<div style="border: 1px solid red;">
+    <div class="test_slide_holder" id="j-slide-holder">
+        <ul class="test_slide_list" id="j-slide-list">
+            <li data-index="0" class="cur">
+                <a href="#">
+                    <img src="../../images/1.png">
+                </a>
+            </li>
+            <li data-index="1">
+                <a href="#">
+                    <img src="../../images/2.png">
+                </a>
+            </li>
+            <li data-index="2">
+                <a href="#">
+                    <img src="../../images/3.png">
+                </a>
+            </li>
+            <li data-index="3">
+                <a href="#">
+                    <img src="../../images/4.png">
+                </a>
+            </li>
+        </ul>
+    </div>
+    <ul class="test_slide_nav" id="j-slide_nav">
+        <li data-index="0" class="cur"></li>
+        <li data-index="1"></li>
+        <li data-index="2"></li>
+        <li data-index="3"></li>
+    </ul>
+    <a href="#" id="j-prevbtn">先前一项</a>
+    <a href="#" id="j-nextbtn">先后一项</a>
+</div>
+<!--/轮播-->
+
+<script type="text/javascript" src="js/jquery.min.1.7.2.js"></script>
+<script type="text/javascript" src="js/ks.marquee.js"></script>
+<script type="text/javascript">
+    $(function () {
+        /* 自动滚动*/
+        ue.marquee({
+            hovertarget: '#j-autoroll', /* 鼠标hover停止切换的对象*/
+            target: '#j-autoroll', /* 滚动对象 一般为 ul*/
+            items: '#j-autoroll li', /* 滚动的详细列表*/
+            delay: 1000, /* 切换间隔时间*/
+            speed: 300, /* 切换速度*/
+            scrollnum: 1, /* 每次滚动个数*/
+            autoplay: true, /* 是否自动播放*/
+            loop: 1, /* 循环模式 1 无限循环 0 不循环*/
+            mode: 0, /* 0表示竖直方向滚动 1 表示水平方向滚动*/
+            direction: 0, /* 表示默认的滚动方向0向上或者向左 1表示向下或者向右*/
+            afterSlide: function () {    /* 每滚动一个完的回调函数*/
+            },
+            beforeSlide: function () {   /* 每滚动一个之前的回调函数*/
+            }
+        });
+
+        /* 轮播*/
+        ue.marquee({
+            hovertarget: "#j-slide-holder",
+            target: '#j-slide-list',
+            items: '#j-slide-list li',
+            delay: 1000,
+            speed: 300,
+            scrollnum: 1,
+            autoplay: true,
+            loop: 1,
+            mode: 0,
+            direction: 0,
+            prevbtn: '#j-prevbtn', /* 向前一项*/
+            nextbtn: '#j-nextbtn', /* 向后一项*/
+            trigger: "mouseover", /* [click|mouseover]*/
+            gotobtn: "#j-slide_nav li", /* 序号导航对象*/
+            currentclass: "cur" /* 当前滚动的导航按钮的class*/
+        });
+    })
+</script>
+</body>
+</html>

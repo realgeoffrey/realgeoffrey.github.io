@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <link rel="shortcut icon" type="image/ico" href="../favicon.ico">
+    <title>瀑布流+百度模板</title>
+    <link href="../cssReset.css" type="text/css" rel="stylesheet">
+    <style>
+
+    </style>
+</head>
+<body>
+<div id="j-waterfall"></div>
+<div class="loading" id="j-waterfall-finished" style="display: none;">没有更多了哦~</div>
+
+<script type="text/javascript" src="js/jquery.min.1.7.2.js"></script>
+<script type="text/javascript" src="js/waterfall.min.js"></script>
+<script type="text/javascript" src="js/baiduTemplate.js"></script>
+
+<script id='waterfall-tpl-joke' type="text/template">
+    <%for(var i = 0; i < result.list.length; i++){%>
+    <div class="j-waterfall-item">
+        <img src="<%=result.list[i].a%>">
+        <p><%=result.list[i].b%></p>
+    </div>
+    <%}%>
+</script>
+
+<script type="text/javascript">
+    $(function () {
+        var waterfallObj = $('#j-waterfall').waterfall({
+            itemCls: 'j-waterfall-item', /* 瀑布流数据块class*/
+            colWidth: 300, /* 瀑布流每列的宽度*/
+            gutterWidth: 20, /* 数据块水平间距*/
+            gutterHeight: 20, /* 数据块垂直间距*/
+            path: function (page) {   /* 瀑布流数据分页url，可以是数组如["/popular/page/", "/"] => "/popular/page/1/"，或者是根据分页返回一个url方法如：function(page) { return '/populr/page/' + page; } => "/popular/page/1/"*/
+                return 'data/index.json?page=' + page;
+            },
+            maxPage: 5, /* 最多显示多少页数据,默认undefined，无限下拉*/
+            bufferPixel: -50, /* 滚动时, 窗口底部到瀑布流最小高度列的距离 > bufferPixel时, 自动加载新数据*/
+            checkImagesLoaded: true, /* 是否加载完图片后再呈现。false：最好给图片添加width和height属性*/
+            dataType: 'json', /* 瀑布流返回数据格式，'json', 'jsonp', 'html'*/
+            loadingMsg: '<div class="loading"><i></i>正在加载</div>', /* 加载提示进度条，html*/
+            callbacks: {
+                /*
+                 * ajax请求开始之前
+                 * @param {Object} loading $('#waterfall-loading')
+                 */
+                loadingStart: function ($loading) {
+                    $loading.show();
+                },
+
+                /*
+                 * ajax请求加载完成
+                 * @param {Object} loading $('#waterfall-loading')
+                 * @param {Boolean} isBeyondMaxPage
+                 */
+                loadingFinished: function ($loading, isBeyondMaxPage) {
+                    if (!isBeyondMaxPage) {
+                        $loading.fadeOut();
+                    } else {
+                        $loading.remove();
+                    }
+                },
+
+                /*
+                 * ajax请求出错误
+                 * @param {String} xhr , "end" "error"
+                 */
+                loadingError: function ($message, xhr) {
+                    $message.html('数据加载失败，请刷新页面后再试。');
+                },
+
+                /*
+                 * 处理ajax返回数方法
+                 * @param {String} data
+                 * @param {String} dataType , "json", "jsonp", "html"
+                 */
+                renderData: function (data, dataType) {
+                    var tpl,
+                        template;
+
+                    if (data.code == 100) {
+                        if (dataType === 'json' || dataType === 'jsonp') {  /* json or jsonp format*/
+                            template = baidu.template('waterfall-tpl-joke', data);
+
+                            return template;
+                        } else {    /* html format*/
+
+                            return data;
+                        }
+                    } else {    /* 停止瀑布流请求*/
+                        $('#j-waterfall-finished').fadeIn();
+                        waterfallObj.waterfall('pause');
+
+                        return false;
+                    }
+                }
+            },
+            prefix: 'j-waterfall', /* 瀑布流元素前辍*/
+            align: 'center', /* 数据块相对于容器对齐方式，'center', 'left', 'right*/
+            minCol: 1, /* 数据块最小列数*/
+            maxCol: undefined, /* 数据块最多显示列数,默认undefined，最大列数无限制*/
+            fitWidth: false, /* 是否自适应父元素宽度*/
+            resizable: false, /* 缩放时是否触发数据重排*/
+            isFadeIn: false, /* 新插入数据是否使用fade动画*/
+            isAnimated: false, /* resize时数据是否显示动画*/
+            isAutoPrefill: true, /* 当文档小于窗口可见区域，自动加载数据*/
+            debug: false    /* 开启debug*/
+        });
+    })
+</script>
+</body>
+</html>

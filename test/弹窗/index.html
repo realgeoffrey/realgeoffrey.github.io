@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <link rel="shortcut icon" type="image/ico" href="../favicon.ico">
+    <title>弹窗</title>
+    <link href="../cssReset.css" type="text/css" rel="stylesheet">
+    <style>
+        .test_qrcode {
+            width: 100px;
+            height: 100px;
+        }
+    </style>
+</head>
+<body>
+<div class="test_qrcode" id="j-qrcode"></div>
+
+<script type="text/javascript" src="js/jquery.min.1.7.2.js"></script>
+<script type="text/javascript" src="js/ks.dialog.js"></script>
+<script type="text/javascript">
+    $(function () {
+        /* 弹出提示框*/
+        ue.dialog({
+            id: "popover-show", /* 对话框的id*/
+            content: '<div style="border: 1px solid red;">内容</div>', /* 对话框的内容*/
+            closeBtn: ".j-pop-close", /*关闭对话框按钮*/
+            lock: true, /* 是否显示遮罩层 参数值*/
+            position: "absolute", /* 当没有遮罩层模式时，对话框的定位的模式["absolute" | "fixed"]*/
+            init: function () {    /* 初始化方法*/
+                if (Math.round((Math.random() * 10)) % 2 === 0) {
+                    this.timer(1000, this.close);
+                }
+            },
+            force: true, /* 如果已经存在相同id的对话框 是否强制关闭*/
+            zIndex: 2/* 对话框的zIndex*/
+        });
+    });
+</script>
+</body>
+</html>
