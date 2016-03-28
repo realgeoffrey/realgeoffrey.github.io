@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="renderer" content="webkit">
+    <link rel="shortcut icon" type="image/ico" href="../favicon.ico">
+    <title>弹窗</title>
+    <link href="../cssReset.css" type="text/css" rel="stylesheet">
+</head>
+<body>
+
+<a href="#" id="j-open-dialog-1">页面中心弹窗</a>
+<a href="#" id="j-open-dialog-2">跟随弹窗</a>
+
+<script type="text/javascript" src="js/jquery.min.1.7.2.js"></script>
+<script type="text/javascript" src="js/ks.easydrag.js"></script>
+<script type="text/javascript" src="js/ks.dialog.js"></script>
+<script type="text/javascript">
+    $(function () {
+        /* 弹出页面中心弹窗*/
+        $('#j-open-dialog-1').on('click', function () {
+            $('#popover-show').remove();
+
+            ue.dialog({
+                id: "popover-show", /* 对话框的id*/
+                content: '<div style="border: 1px solid red;"><div class="j-drag-1">拖动我</div>中心内容</div>', /* 对话框的内容*/
+                closeBtn: ".j-pop-close", /*关闭对话框按钮*/
+                lock: true, /* 是否显示遮罩层*/
+                position: "absolute", /* 当没有遮罩层模式时，对话框的定位的模式["absolute" | "fixed"]*/
+                drag: true, /* 是否可以拖动 [true | false]*/
+                dragHock : ".j-drag-1", /* 设置可以拖动的元素*/
+
+                init: function () {    /* 初始化方法*/
+                    if (Math.round((Math.random() * 10)) % 2 === 0) {
+                        this.timer(1000, this.close);
+                    }
+                },
+                force: true, /* 如果已经存在相同id的对话框 是否强制关闭*/
+                zIndex: 2   /* 对话框的z-index值*/
+            });
+        });
+
+        /* 弹出跟随弹窗*/
+        $('#j-open-dialog-2').on('click', function () {
+            $('#popover-show').remove();
+
+            ue.dialog.follow({
+                    id: "popover-show",
+                    content: '<div style="border: 1px solid red;"><i class="j-drag-2">拖动我</i>跟随内容</div>',
+                    closeBtn: ".j-pop-close",
+                    lock: false,
+                    position: "absolute",
+                    drag: true,
+                    dragHock : ".j-drag-2",
+
+                    init: function () {
+                    },
+                    force: true,
+                    zIndex: 2
+                },
+                $(this), /* 被跟随的jquery对象*/
+                "left_bottom", /* 跟随的位置：水平方向有["left" | "center" | "right"]；竖直方向有["top" | "middle" | "bottom"]。参数为两个方向的组合，比如"left_right"。该组件也会对对话框添加一个对应的classname，如（left_right）*/
+                {x: -30, y: 10}    /* 跟随位置的微调。比如 {x : 3, y :-5}表示在pos控制位置的基础上，再往右移动3px，往上移动5px*/
+            );
+        });
+    });
+</script>
+</body>
+</html>
