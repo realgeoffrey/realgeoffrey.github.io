@@ -14,9 +14,6 @@
             padding: 5px;
             position: relative;
             background: pink;
-        }
-        .test_content {
-            height: 250px;
             overflow: hidden;
         }
         .test_scroll {
@@ -46,13 +43,11 @@
 </head>
 <body>
 <div class="test_wrap" id="j-wrap">
-    <div class="test_content">
-        <ul id="j-content">
-            <li>
-                内容内容
-            </li>
-        </ul>
-    </div>
+    <ul id="j-content">
+        <li>
+            内容内容
+        </li>
+    </ul>
     <div class="test_scroll" id="j-scroll">
         <div class="test_scroll_bg" id="j-scroll-bg"></div>
         <div class="test_scroll_btn" id="j-scroll-btn"></div>
@@ -83,7 +78,7 @@
 
             /* 滚动滚动条到指定的位置*/
             scrollbar.scrollTo('100%');
-        }, 1000);
+        }, 500);
     })
 </script>
 </body>
