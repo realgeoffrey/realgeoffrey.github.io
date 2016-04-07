@@ -19,6 +19,7 @@
 <script type="text/javascript" src="js/waterfall.min.js"></script>
 <script type="text/javascript" src="js/baiduTemplate.js"></script>
 
+<p>百度模板默认进行html转义，会把里面的回车转换为空格，因此如果要在百度模板里面增加pre标签，可以用传值进去并且用不转义输出。</p>
 <script id='waterfall-tpl-joke' type="text/template">
     <%for(var i = 0; i < result.list.length; i++){%>
     <div class="j-waterfall-item">
