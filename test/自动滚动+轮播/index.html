@@ -22,43 +22,43 @@
         /*/自动滚动*/
     </style>
     <style>
-        /* 轮播*/
-        .test_slide_holder {
+        /* 轮播（上下单个）*/
+        .test_slide_holder_1 {
             width: 100px;
             height: 100px;
             overflow: hidden;
         }
-        .test_slide_list {
+        .test_slide_list_1 {
             width: 100px;
             height: 100px;
             zoom: 1;
         }
-        .test_slide_list:after {
+        .test_slide_list_1:after {
             display: block;
             clear: both;
             content: ".";
             visibility: hidden;
             height: 0;
         }
-        .test_slide_list li {
-            width: 200px;
-            height: 200px;
+        .test_slide_list_1 li {
+            width: 100px;
+            height: 100px;
             float: left;
             _display: inline;
         }
-        .test_slide_nav {
+        .test_slide_nav_1 {
             width: 120px;
             margin: 0 auto;
             zoom: 1;
         }
-        .test_slide_nav:after {
+        .test_slide_nav_1:after {
             display: block;
             clear: both;
             content: ".";
             visibility: hidden;
             height: 0;
         }
-        .test_slide_nav li {
+        .test_slide_nav_1 li {
             border-radius: 50%;
             background-color: #908483;
             cursor: pointer;
@@ -68,10 +68,38 @@
             float: left;
             _display: inline;
         }
-        .test_slide_nav li.cur {
+        .test_slide_nav_1 li.cur {
             background-color: #000;
         }
-        /*/轮播*/
+        /*/轮播（上下单个）*/
+    </style>
+    <style>
+        /* 轮播（左右多个）*/
+        .test_slide_holder_2 {
+            width: 340px;
+            height: 100px;
+            overflow: hidden;
+        }
+        .test_slide_list_2 {
+            width: 340px;
+            height: 100px;
+            zoom: 1;
+        }
+        .test_slide_list_2:after {
+            display: block;
+            clear: both;
+            content: ".";
+            visibility: hidden;
+            height: 0;
+        }
+        .test_slide_list_2 li {
+            width: 100px;
+            height: 100px;
+            margin-right: 20px;
+            float: left;
+            _display: inline;
+        }
+        /*/轮播（左右多个）*/
     </style>
 </head>
 <body>
@@ -96,10 +124,10 @@
     </ul>
 </div>
 <!--/自动滚动-->
-<!--轮播-->
+<!-- 轮播（上下单个）-->
 <div style="border: 1px solid red;">
-    <div class="test_slide_holder" id="j-slide-holder">
-        <ul class="test_slide_list" id="j-slide-list">
+    <div class="test_slide_holder_1" id="j-slide-holder-1">
+        <ul class="test_slide_list_1" id="j-slide-list-1">
             <li data-index="0" class="cur">
                 <a href="#">
                     <img src="../../images/1.png">
@@ -120,18 +148,59 @@
                     <img src="../../images/4.png">
                 </a>
             </li>
+            <li data-index="4">
+                <a href="#">
+                    <img src="../../images/github-mark.png">
+                </a>
+            </li>
         </ul>
     </div>
-    <ul class="test_slide_nav" id="j-slide_nav">
+    <ul class="test_slide_nav_1" id="j-slide_nav-1">
         <li data-index="0" class="cur"></li>
         <li data-index="1"></li>
         <li data-index="2"></li>
         <li data-index="3"></li>
+        <li data-index="4"></li>
     </ul>
-    <a href="#" id="j-prevbtn">先前一项</a>
-    <a href="#" id="j-nextbtn">先后一项</a>
+    <a href="#" id="j-prevbtn-1">先前一项</a>
+    <a href="#" id="j-nextbtn-1">先后一项</a>
 </div>
-<!--/轮播-->
+<!--/轮播（上下单个）-->
+<!-- 轮播（左右多个）-->
+<div style="border: 1px solid red;">
+    <div class="test_slide_holder_2" id="j-slide-holder-2">
+        <ul class="test_slide_list_2" id="j-slide-list-2">
+            <li data-index="0" class="cur">
+                <a href="#">
+                    <img src="../../images/1.png">
+                </a>
+            </li>
+            <li data-index="1">
+                <a href="#">
+                    <img src="../../images/2.png">
+                </a>
+            </li>
+            <li data-index="2">
+                <a href="#">
+                    <img src="../../images/3.png">
+                </a>
+            </li>
+            <li data-index="3">
+                <a href="#">
+                    <img src="../../images/4.png">
+                </a>
+            </li>
+            <li data-index="4">
+                <a href="#">
+                    <img src="../../images/github-mark.png">
+                </a>
+            </li>
+        </ul>
+    </div>
+    <a href="#" id="j-prevbtn-2">先前一项</a>
+    <a href="#" id="j-nextbtn-2">先后一项</a>
+</div>
+<!--/轮播（左右多个）-->
 
 <script type="text/javascript" src="js/jquery.min.1.7.2.js"></script>
 <script type="text/javascript" src="js/ks.marquee.js"></script>
@@ -155,11 +224,11 @@
             }
         });
 
-        /* 轮播*/
+        /* 轮播（上下单个）*/
         ue.marquee({
-            hovertarget: "#j-slide-holder",
-            target: '#j-slide-list',
-            items: '#j-slide-list li',
+            hovertarget: "#j-slide-holder-1",
+            target: '#j-slide-list-1',
+            items: '#j-slide-list-1 li',
             delay: 1000,
             speed: 300,
             scrollnum: 1,
@@ -167,11 +236,29 @@
             loop: 1,
             mode: 0,
             direction: 0,
-            prevbtn: '#j-prevbtn', /* 向前一项*/
-            nextbtn: '#j-nextbtn', /* 向后一项*/
+            prevbtn: '#j-prevbtn-1', /* 向前一项*/
+            nextbtn: '#j-nextbtn-1', /* 向后一项*/
             trigger: "mouseover", /* [click|mouseover]*/
-            gotobtn: "#j-slide_nav li", /* 序号导航对象*/
+            gotobtn: "#j-slide_nav-1 li", /* 序号导航对象*/
             currentclass: "cur" /* 当前滚动的导航按钮的class*/
+        });
+
+        /* 轮播（左右多个）*/
+        ue.marquee({
+            hovertarget: "#j-slide-holder-2",
+            target: '#j-slide-list-2',
+            items: '#j-slide-list-2 li',
+            delay: 1000,
+            speed: 300,
+            scrollnum: 1,
+            autoplay: true,
+            loop: 1,
+            mode: 1,
+            direction: 0,
+            prevbtn: '#j-prevbtn-2',
+            nextbtn: '#j-nextbtn-2',
+            trigger: "click",
+            currentclass: "cur"
         });
     })
 </script>
