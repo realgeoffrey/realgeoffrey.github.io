@@ -4,13 +4,14 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="renderer" content="webkit">
-    <!--<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
     <meta name="format-detection" content="telephone=no,email=no,address=no">
     <!--<link rel="dns-prefetch" href="">-->
     <meta name="keywords" content="">
     <meta name="description" content="">
     <link rel="shortcut icon" type="image/ico" href="favicon.ico">
     <title>即将上线 中国自然生态百科数据库</title>
+    <link href="css/reset.css" type="text/css" rel="stylesheet">
     <link href="css/index.css" type="text/css" rel="stylesheet">
     <link href="css/jquery.fullPage.css" type="text/css" rel="stylesheet">
 </head>
@@ -49,18 +50,11 @@
         <div class="coming_title">
             <h6>金鱼</h6>
             <div>脊索动物门 / 鱼纲 / 鲤形目 / 鲤科</div>
-            <p>金鱼起源于中国，也称“金鲫鱼”，近似鲤鱼，但它没有口须，是由鲫鱼进化而成的观赏鱼类。金鱼的品种很多，颜色有红、橙、紫、蓝、墨、银白、五花等，分为文种、草种、龙种、蛋种四大品系。在12世纪已开始金鱼家化的遗传研究，经过长时间培育，品种不断优化，现在世界各国的金鱼都是直接或间接由中国引种的。</p>
+            <p>
+                金鱼起源于中国，也称“金鲫鱼”，近似鲤鱼，但它没有口须，是由鲫鱼进化而成的观赏鱼类。金鱼的品种很多，颜色有红、橙、紫、蓝、墨、银白、五花等，分为文种、草种、龙种、蛋种四大品系。在12世纪已开始金鱼家化的遗传研究，经过长时间培育，品种不断优化，现在世界各国的金鱼都是直接或间接由中国引种的。</p>
         </div>
     </div>
 </div>
-
-<nav id="j-fullpage-menu" class="coming_sidenav">
-    <a href="#firstPage" data-menuanchor="firstPage"></a>
-    <a href="#secondPage" data-menuanchor="secondPage"></a>
-    <a href="#thirdPage" data-menuanchor="thirdPage"></a>
-    <a href="#fourthPage" data-menuanchor="fourthPage"></a>
-    <a href="#fifthPage" data-menuanchor="fifthPage"></a>
-</nav>
 
 <script type="text/javascript" src="js/jquery-2.2.3.min.js"></script>
 <script type="text/javascript" src="js/fastclick.min.js"></script>
@@ -73,12 +67,10 @@
         /* 单页滚动*/
         $('#j-fullpage-content').fullpage({
             menu: '#j-fullpage-menu', /* 跳转按钮*/
-            anchors: ['firstPage', 'secondPage', 'thirdPage', 'fourthPage', 'fifthPage'], /* 跳转按钮项*/
-            scrollingSpeed: 500, /* 切换速度*/
-            afterLoad: function (anchorLink, index) {   /* 滚动页面结束*/
-            },
-            onLeave: function (index, nextIndex, direction) {   /* 滚动页面前*/
-            }
+            scrollingSpeed: 800, /* 切换速度*/
+            recordHistory: false, /* 关闭切换时历史记录*/
+            navigation: true, /* 打开纵向导航*/
+            navigationTooltips: ['多肉', '蝴蝶', '蘑菇', '鹰', '金鱼']   /* 纵向导航hover名字*/
         });
     });
 </script>

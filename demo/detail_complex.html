@@ -11,6 +11,7 @@
     <meta name="description" content="">
     <link rel="shortcut icon" type="image/ico" href="favicon.ico">
     <title>难辨鸟种详情页</title>
+    <link href="css/reset.css" type="text/css" rel="stylesheet">
     <link href="css/index.css" type="text/css" rel="stylesheet">
 </head>
 <body>
@@ -29,10 +30,8 @@
             </div>
         </div>
         <div class="piece_2">
-            <div>
-                <div class="complex_p">
-                    <div class="complex_p_l">柳莺科一直是中国鸟类分类学中问题最多、研究最不完善的类群。</div>
-                </div>
+            <div class="complex_p">
+                <div class="complex_p_l">柳莺科一直是中国鸟类分类学中问题最多、研究最不完善的类群。</div>
             </div>
         </div>
     </div>
@@ -53,17 +52,15 @@
             </div>
         </div>
         <div class="piece_2">
-            <div>
-                <a href="#" class="j-open-dialog-1">
-                    <i class="iconfont">&#xe613;</i>
-                </a>
-                <div class="detail_text">
-                    <div>
-                        <div class="iconfont">&#xe60f;</div>
-                        <h5>巨嘴柳莺</h5>
-                        <div class="iconfont">&#xe610;</div>
-                        <p>上嘴黑色，下嘴基部为黄褐色，而先端亦转为与上嘴同色。嘴较厚，其厚度在鼻孔处3mm以上</p>
-                    </div>
+            <a href="#" class="j-open-dialog-1">
+                <i class="iconfont">&#xe613;</i>
+            </a>
+            <div class="detail_text">
+                <div>
+                    <div class="iconfont">&#xe60f;</div>
+                    <h5>巨嘴柳莺</h5>
+                    <div class="iconfont">&#xe610;</div>
+                    <p>上嘴黑色，下嘴基部为黄褐色，而先端亦转为与上嘴同色。嘴较厚，其厚度在鼻孔处3mm以上</p>
                 </div>
             </div>
         </div>
@@ -116,15 +113,15 @@
         FastClick.attach(document.body);
 
         /* 显示\隐藏弹窗*/
-        $(document).on('click','.j-open-dialog-1',function () {
+        $(document).on('click', '.j-open-dialog-1', function () {
             $('.j-dialog-1').fadeIn();
 
             return false;
-        }).on('click','.j-dialog-close-1',function () {
+        }).on('click', '.j-dialog-close-1', function () {
             $('.j-dialog-1').fadeOut();
 
             return false;
-        }).on('keyup',function (e) {
+        }).on('keyup', function (e) {
             var $dialog = $('.j-dialog-1');
 
             if (e.which === 27 && $dialog.is(':visible')) {

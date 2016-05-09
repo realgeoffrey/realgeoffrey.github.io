@@ -11,6 +11,7 @@
     <meta name="description" content="">
     <link rel="shortcut icon" type="image/ico" href="favicon.ico">
     <title>难辨鸟种首页</title>
+    <link href="css/reset.css" type="text/css" rel="stylesheet">
     <link href="css/index.css" type="text/css" rel="stylesheet">
 </head>
 <body>
@@ -48,14 +49,12 @@
             </div>
         </div>
         <div class="piece_2">
-            <div>
-                <div class="complex_p">
-                    <div class="complex_p_l">柳莺科一直是中国鸟类分类学中问题最多、研究最不完善的类群。</div>
-                    <a href="#" class="complex_p_r">
-                        查看详细
-                        <i class="iconfont">&#xe606;</i>
-                    </a>
-                </div>
+            <div class="complex_p">
+                <div class="complex_p_l">柳莺科一直是中国鸟类分类学中问题最多、研究最不完善的类群。</div>
+                <a href="#" class="complex_p_r">
+                    查看详细
+                    <i class="iconfont">&#xe606;</i>
+                </a>
             </div>
         </div>
     </div>
@@ -63,7 +62,7 @@
 <div class="index_complex_3">
     <div class="wrap">
         <div class="piece_1"></div>
-        <div class="piece_2"><div></div></div>
+        <div class="piece_2"></div>
         <div class="piece_3"></div>
     </div>
 </div>
@@ -138,13 +137,16 @@
 
         /* swipe轮播*/
         window.mySwipe = Swipe(document.getElementById('j-swipe'), {
-             startSlide: 0,
-             auto: 3000,
-             continuous: true,
-             disableScroll: true,
-             stopPropagation: true,
-             callback: function(index, element) {},
-             transitionEnd: function(index, element) {}
+            startSlide: 0,
+            speed: 800,
+            auto: 5000,
+            continuous: true,
+            disableScroll: false,
+            stopPropagation: true,
+            callback: function (index, element) {
+            },
+            transitionEnd: function (index, element) {
+            }
         });
     });
 </script>
