@@ -7,9 +7,9 @@
     <meta name="keywords" content="">
     <meta name="description" content="">
     <link rel="shortcut icon" type="image/ico" href="../favicon.ico">
-    <title>全屏滚动(pc+wap)</title>
+    <title>单页</title>
     <link href="../cssReset.css" type="text/css" rel="stylesheet">
-    <link href="fullPage.css" type="text/css" rel="stylesheet"><!-- 使用slide才必须加此css-->
+    <link href="jquery.fullpage.min.css" type="text/css" rel="stylesheet"><!-- 使用slide才必须加此css-->
     <style>
         .sidenav {
             position: absolute;
@@ -21,7 +21,7 @@
 <body>
 
 <div id="j-fullpage">
-    <div class="section">
+    <div class="section" id="j-section">
         <div class="slide">
             第一页内容：滑块1
         </div>
@@ -37,32 +37,63 @@
     </div>
 </div>
 
-<ul id="j-menu" class="sidenav">
-    <li data-menuanchor="firstPage">
-        <a href="#firstPage">跳转到第一页</a>
-    </li>
-    <li data-menuanchor="secondPage">
-        <a href="#secondPage">跳转到第二页</a>
-    </li>
-    <li data-menuanchor="thirdPage">
-        <a href="#thirdPage">跳转到第三页</a>
-    </li>
-</ul>
+
+<div style="position: fixed; top: 0;left: 50%;">
+    <a href="#" id="destroy">destroy()</a>
+    <a href="#" id="destroyAll">destroy('all')</a>
+    <a href="#" id="reBuild">reBuild()</a>
+    <a href="#" id="addDom_1">add Dom_1</a>
+    <a href="#" id="addDom_2">add Dom_2</a>
+</div>
 
 <script type="text/javascript" src="js/jquery.min.1.7.2.js"></script>
 <script type="text/javascript" src="js/jquery.fullPage.min.js"></script>
+<script type="text/javascript" src="js/baiduTemplate.js"></script>
+
+<script id="j-template-1" type="text/html">
+    <div class="section fp-section">
+        第4页内容
+    </div>
+</script>
+<script id="j-template-2" type="text/html">
+    <div class="slide">
+        123123
+    </div>
+</script>
+
+
 <script type="text/javascript">
     $(function () {
         /* 单页滚动*/
         $('#j-fullpage').fullpage({
             sectionsColor: ['#1bbc9b', '#4BBFC3', 'red'], /* 按顺序每个页面背景色*/
-            menu: '#j-menu', /* 跳转按钮*/
-            anchors: ['firstPage', 'secondPage', 'thirdPage'], /* 跳转按钮项*/
-            scrollingSpeed: 500, /* 切换速度*/
+            navigation: true,
             afterLoad: function (anchorLink, index) {   /* 滚动页面结束*/
             },
             onLeave: function (index, nextIndex, direction) {   /* 滚动页面前*/
             }
+        });
+
+
+        $('#destroy').on('click',function () {
+            $.fn.fullpage.destroy();
+            return false;
+        });
+        $('#destroyAll').on('click',function () {
+            $.fn.fullpage.destroy('all');
+            return false;
+        });
+        $('#reBuild').on('click',function () {
+            $.fn.fullpage.reBuild();
+            return false;
+        });
+
+        $('#addDom_1').on('click', function () {
+            $('#j-fullpage').append(baidu.template('j-template-2',{}));
+        });
+
+        $('#addDom_2').on('click', function () {
+            $('#j-section').append(baidu.template('j-template-2',{}));
         });
     })
 </script>
