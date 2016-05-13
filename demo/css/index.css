@@ -1006,6 +1006,24 @@ footer .wrap > nav a + a {
 }
 /*/即将上线*/
 
+/* 生物图鉴*/
+.handbook_bg {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    background-position: center center;
+    background-size: cover;
+}
+.handbook_content {
+    position: absolute;
+    top: 50%;
+    left: 2.3rem;
+    height: 700px;
+    width: 500px;
+
+}
+/*/生物图鉴*/
+
 /* 媒体查询*/
 @media (max-width: 1439px) {
 
