@@ -45,6 +45,10 @@
         $('#j-open-dialog-1').on('click', function () {
             ue.dialog.maskClosable = false;
 
+            if (ue.dialog.list["j-pop-1"] && typeof ue.dialog.list["j-pop-1"].close === 'function') {
+                ue.dialog.list["j-pop-1"].close();
+            }
+
             ue.dialog({
                 id: "j-pop-1", /* 对话框的id*/
                 width: 600, /* 对话框的总宽度*/
@@ -82,8 +86,6 @@
         });
 
         $('#j-open-dialog-2').on('click', function () {
-            ue.dialog.maskClosable = true;
-
             ue.dialog.custom({
                 show_header: true, /* 是否显示标题*/
                 title: '我是一个标题', /* 对话框的标题*/
@@ -140,8 +142,6 @@
         });
 
         $('#j-open-dialog-5').on('click', function () {
-            ue.dialog.maskClosable = true;
-
             ue.dialog.tip({
                 title: 'tip标题',
                 content: '<div style="border: 1px solid red;">《中心内容》</div>'
