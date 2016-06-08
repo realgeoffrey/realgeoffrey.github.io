@@ -6,9 +6,9 @@
     <meta name="renderer" content="webkit">
     <meta name="keywords" content="">
     <meta name="description" content="">
-    <link rel="shortcut icon" type="image/ico" href="../favicon.ico">
+    <link rel="shortcut icon" type="image/ico" href="../../favicon.ico">
     <title>单页</title>
-    <link href="../cssReset.css" type="text/css" rel="stylesheet">
+    <link href="../../css/cssReset.css" type="text/css" rel="stylesheet">
     <link href="jquery.fullpage.min.css" type="text/css" rel="stylesheet"><!-- 使用slide才必须加此css-->
 </head>
 <body>
@@ -40,8 +40,8 @@
     <a href="#" id="addDom_2">addDom_2</a>
 </div>
 
-<!--<script type="text/javascript" src="js/jquery.min.1.7.2.js"></script>-->
-<script type="text/javascript" src="../../js/jquery-2.2.3.min.js"></script>
+<script type="text/javascript" src="js/jquery.min.1.7.2.js"></script>
+<!--<script type="text/javascript" src="../../js/jquery-2.2.3.min.js"></script>-->
 <script type="text/javascript" src="js/jquery.fullPage.min.js"></script>
 <script type="text/javascript" src="js/baiduTemplate.js"></script>
 
@@ -86,8 +86,8 @@
     $(function () {
         /* 单页滚动*/
         $('#j-fullpage').fullpage({
-//            navigation: true
-//            slidesNavigation: true
+            navigation: true,
+            slidesNavigation: true
         });
 
         $('#reBuild').on('click', function () {

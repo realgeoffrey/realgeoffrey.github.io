@@ -6,9 +6,9 @@
     <meta name="renderer" content="webkit">
     <meta name="keywords" content="">
     <meta name="description" content="">
-    <link rel="shortcut icon" type="image/ico" href="../favicon.ico">
+    <link rel="shortcut icon" type="image/ico" href="../../favicon.ico">
     <title>自制滚动条</title>
-    <link href="../cssReset.css" type="text/css" rel="stylesheet">
+    <link href="../../css/cssReset.css" type="text/css" rel="stylesheet">
     <style>
         .test_wrap {
             width: 50px;
@@ -20,10 +20,10 @@
         }
         .test_scroll {
             position: absolute;
-            top: 5px;
+            top: 50%;
+            margin-top: -50px;
             right: 5px;
             width: 5px;
-            height: 250px;
             cursor: pointer;
         }
         .test_scroll_bg {
@@ -45,15 +45,15 @@
 </head>
 <body>
 <div class="test_wrap" id="j-wrap">
+    <div class="test_scroll" id="j-scroll">
+        <div class="test_scroll_bg" id="j-scroll-bg"></div>
+        <div class="test_scroll_btn" id="j-scroll-btn"></div>
+    </div>
     <ul id="j-content">
         <li>
             内容内容
         </li>
     </ul>
-    <div class="test_scroll" id="j-scroll">
-        <div class="test_scroll_bg" id="j-scroll-bg"></div>
-        <div class="test_scroll_btn" id="j-scroll-btn"></div>
-    </div>
 </div>
 
 <script type="text/javascript" src="js/jquery.min.1.7.2.js"></script>
@@ -62,7 +62,8 @@
     $(function () {
         /* 自制滚动条*/
         var scrollbar = ue.scrollbar({
-            height: 250, /* 滚动条和内容的高度*/
+            height: 250, /* 内容（和滚动条）的高度*/
+            scrollbar_height: 100,  /* 滚动条的高度*/
             scroll_per: 300, /* 每次滚动像素x10*/
             target: $("#j-wrap"), /* 包含滚动条和内容的总容器*/
             box: $("#j-content"), /* 内容容器*/
