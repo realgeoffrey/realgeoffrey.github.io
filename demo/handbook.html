@@ -13,7 +13,7 @@
     <title>生物图鉴</title>
     <link href="css/reset.css" type="text/css" rel="stylesheet">
     <link href="css/index.css" type="text/css" rel="stylesheet">
-    <link href="css/jquery.fullPage.css" type="text/css" rel="stylesheet">
+    <link href="css/jquery.fullpage.min.css" type="text/css" rel="stylesheet">
 </head>
 <body>
 
@@ -54,6 +54,9 @@
                 <dt>濒危级别：濒危（EN）</dt>
             </dl>
         </div>
+        <div class="handbook_right j-handbook-right">
+            体态纤瘦的小型白色鹭类，全身洁白，亦有灰色型个体，繁殖期时枕部有两条带状长羽，垂在头后，宛若双辫，遇风时飘在空中，甚是醒目。肩及背间着生蓑羽，背上蓑羽松散延长至尾端。繁殖期结束后“辫子”消失。与大白鹭和中白鹭相比体型较小，与黄嘴白鹭的区别在于喙黑色。
+        </div>
 
         <div class="slide" data-anchor="1">
             <div class="handbook" style="background-image: url(images/handbook/egret_1.jpg);"></div>
@@ -77,22 +80,83 @@
             <div class="handbook" style="background-image: url(images/handbook/egret_7.jpg);"></div>
         </div>
     </div>
-    <!--<div class="section" data-anchor="section2">-->
-    <!--第二页内容-->
-    <!--</div>-->
+    <div class="section" data-anchor="section2">
+        <div class="slide" data-anchor="1">
+            <div class="handbook" style="background-image: url(images/handbook/egret_7.jpg);"></div>
+        </div>
+        <div class="slide" data-anchor="2">
+            <div class="handbook" style="background-image: url(images/handbook/egret_7.jpg);"></div>
+        </div>
+    </div>
+
+    <div class="section" data-anchor="loading" id="j-loading-in">
+        <div class="handbook_loading"></div>
+    </div>
 </div>
 
-<script type="text/javascript" src="js/jquery-2.2.3.min.js"></script>
+<div class="hb_loading" id="j-loading-out"></div>
+
+<script type="text/javascript" src="js/jquery-2.2.4.min.js"></script>
 <script type="text/javascript" src="js/fastclick.min.js"></script>
 <script type="text/javascript" src="js/jquery.fullpage.min.js"></script>
-<!--<script type="text/javascript" src="js/baiduTemplate.min.js"></script>-->
+<script type="text/javascript" src="js/baiduTemplate.min.js"></script>
+
+<script type="text/javascript-x-tmpl" id="j-sectionTmpl">
+    <div class="section" data-anchor="section3">
+        <div class="slide" data-anchor="1">
+            <div class="handbook" style="background-image: url(images/handbook/egret_7.jpg);"></div>
+        </div>
+        <div class="slide" data-anchor="2">
+            <div class="handbook" style="background-image: url(images/handbook/egret_7.jpg);"></div>
+        </div>
+    </div>
+</script>
+
+<a href="#" id="j-1" style="position: fixed;top: 0;left:0;color: #000;background: #fff;">$.fn.fullpage.destroy();</a>
+<a href="#" id="j-2" style="position: fixed;top: 20px;left:0;color: #000;background: #fff;">$.fn.fullpage.destroy('all');</a>
+<a href="#" id="j-3" style="position: fixed;top: 40px;left:0;color: #000;background: #fff;">$.fn.fullpage.reBuild();</a>
+<a href="#" id="j-4" style="position: fixed;top: 60px;left:0;color: #000;background: #fff;">$('#j-fullpage-handbook').fullpage({});</a>
+<a href="#" id="j-5" style="position: fixed;top: 80px;left:0;color: #000;background: #fff;">$('#j-fullpage-handbook').append();</a>
+
 <script type="text/javascript">
+    var section = baidu.template('j-sectionTmpl', {});
+    var $fullpage = $('#j-fullpage-handbook');
+    var $loadingIn = $('#j-loading-in');
+    var $loadingOut = $('#j-loading-out');
+
+
+    function hbInit() {
+        var myself = arguments.callee;
+
+        /* 单页滚动*/
+        $('#j-fullpage-handbook').fullpage({
+//            lockAnchors: true,
+            recordHistory: false,
+            afterLoad: function (anchorLink, index) {
+                if (anchorLink === 'loading') {
+                    console.log(anchorLink);
+
+                    $.fn.fullpage.destroy('all');
+                    $loadingIn.before(section);
+
+                    $loadingOut.show();
+                    $.fn.fullpage.setAllowScrolling(false);
+                    $.fn.fullpage.setKeyboardScrolling(false);
+
+                    window.location.hash = '#egret';
+                    myself();
+                    $.fn.fullpage.silentMoveTo('egret');
+                    $loadingOut.fadeOut();
+                }
+            }
+        });
+    }
+
     $(function () {
         /* fastclick*/
         FastClick.attach(document.body);
 
-        /* 单页滚动*/
-        $('#j-fullpage-handbook').fullpage({});
+        hbInit();
 
         /* 展示名字*/
         $(document).on('mouseenter click', '.j-handbook-title', function () {
@@ -109,7 +173,7 @@
 
             $section.removeClass('fade_in');
             $section.find('.j-handbook-close').fadeOut();
-        }).on('click', '.j-handbook-bg, .j-handbook-left', function () {
+        }).on('click', '.j-handbook-bg, .j-handbook-left, .j-handbook-right', function () {
             var $section = $(this).closest('.section');
 
             $section.addClass('fade_in');
@@ -121,7 +185,37 @@
             $section.find('.j-handbook-close').fadeOut();
 
             return false;
-        })
+        });
+
+        $(document).on('click', '#j-1', function () {
+
+            //destroy any plugin event (scrolls, hashchange in the URL...)
+            $.fn.fullpage.destroy();
+
+            return false;
+        });
+        $(document).on('click', '#j-2', function () {
+
+            //destroy any plugin event and any plugin modification done over your original HTML markup.
+            $.fn.fullpage.destroy('all');
+
+            return false;
+        });
+        $(document).on('click', '#j-3', function () {
+            $.fn.fullpage.reBuild();
+
+            return false;
+        });
+        $(document).on('click', '#j-4', function () {
+            $('#j-fullpage-handbook').fullpage({});
+
+            return false;
+        });
+        $(document).on('click', '#j-5', function () {
+            $('#j-fullpage-handbook').append(section);
+
+            return false;
+        });
     });
 </script>
 </body>

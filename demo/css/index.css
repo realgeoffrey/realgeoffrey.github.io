@@ -1007,6 +1007,39 @@ footer .wrap > nav a + a {
 /*/即将上线*/
 
 /* 生物图鉴*/
+.hb_loading {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 3;
+    background: #404040;
+    display: none;
+}
+.handbook_loading {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 2;
+    background: #404040;
+}
+.hb_loading:after,
+.handbook_loading:after {
+    content: 'loading...';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-top: -32px;
+    margin-left: -32px;
+    width: 64px;
+    height: 64px;
+    line-height: 64px;
+    font-size: .8rem;
+    color: #fff;
+}
 .handbook_bg {
     position: absolute;
     top: 0;
@@ -1054,22 +1087,27 @@ footer .wrap > nav a + a {
 .fade_in .handbook_bg {
     background-color: rgba(0, 0, 0, .5);
 }
-.fade_in .handbook_left {
+.fade_in .handbook_left,
+.fade_in .handbook_right {
     opacity: 1;
 }
-.handbook_left::-webkit-scrollbar {
+.handbook_left::-webkit-scrollbar,
+.handbook_right::-webkit-scrollbar {
     width: .2rem;
 }
-.handbook_left::-webkit-scrollbar-track {
+.handbook_left::-webkit-scrollbar-track,
+.handbook_right::-webkit-scrollbar-track {
     -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.2);
     border-radius: 10px;
 }
-.handbook_left::-webkit-scrollbar-thumb {
+.handbook_left::-webkit-scrollbar-thumb,
+.handbook_right::-webkit-scrollbar-thumb {
     border-radius: 10px;
     background: rgba(0, 0, 0, 0.1);
     -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
 }
-.handbook_left::-webkit-scrollbar-thumb:window-inactive {
+.handbook_left::-webkit-scrollbar-thumb:window-inactive,
+.handbook_right::-webkit-scrollbar-thumb:window-inactive {
     background: rgba(255, 0, 0, 0.3);
 }
 .handbook_title {
@@ -1140,35 +1178,63 @@ footer .wrap > nav a + a {
 .handbook_info dd {
     height: .7rem;
 }
-/*.handbook_info .iconfont {*/
-/*position: absolute;*/
-/*top: 50%;*/
-/*right: 0;*/
-/*margin-top: -.55rem;*/
-/*width: 1.1rem;*/
-/*height: 1.1rem;*/
-/*color: #fff;*/
-/*font-size: .5rem;*/
-/*text-align: right;*/
-/*opacity: 0;*/
-/*transition: .5s;*/
-/*}*/
 .handbook_info dt:hover .iconfont {
     opacity: 1;
 }
-.fp-controlArrow.fp-prev {
-    background: url(../images/sprites.png) 0 0 no-repeat !important;
-    background-size: 26px !important;
-    width: 26px !important;
-    height: 40px !important;
-    border: 0 !important;
+.handbook_right {
+    position: absolute;
+    top: 50%;
+    right: 2rem;
+    margin-top: 200px;
+    height: 100px;
+    width: 500px;
+    z-index: 3;
+    color: #d2d2d2;
+    font-size: .5rem;
+    line-height: .87rem;
+    overflow-x: hidden;
+    overflow-y: auto;
+    opacity: 0;
+    transition: 1s;
 }
+.fp-controlArrow.fp-prev,
 .fp-controlArrow.fp-next {
-    background: url(../images/sprites.png) 0 -44px no-repeat !important;
-    background-size: 26px !important;
-    width: 26px !important;
-    height: 40px !important;
-    border: 0 !important;
+    width: 1.5rem !important;
+    height: 1.5rem !important;
+    border: none !important;
+}
+.fp-controlArrow.fp-prev:before {
+    font-family: "iconfont" !important;
+    font-style: normal;
+    -webkit-font-smoothing: antialiased;
+    -webkit-text-stroke-width: 0.2px;
+    -moz-osx-font-smoothing: grayscale;
+    content: '\e604';
+    display: block;
+    width: 1.5rem;
+    height: 1.5rem;
+    line-height: 1.5rem;
+    color: #fff;
+    font-size: 1.5rem;
+    text-align: center;
+}
+.fp-controlArrow.fp-next:before {
+    font-family: "iconfont" !important;
+    font-style: normal;
+    -webkit-font-smoothing: antialiased;
+    -webkit-text-stroke-width: 0.2px;
+    -moz-osx-font-smoothing: grayscale;
+    content: '\e606';
+    display: block;
+    width: 1.5rem;
+    height: 1.5rem;
+    line-height: 1.5rem;
+    color: #fff;
+    font-size: 1.5rem;
+    text-align: center;
+}
+.fp-section {
+    overflow: hidden;
 }
 /*/生物图鉴*/
 
@@ -1203,6 +1269,10 @@ footer .wrap > nav a + a {
     .handbook_left {
         margin-top: -400px;
         height: 800px;
+    }
+    .handbook_right {
+        margin-top: 250px;
+        height: 150px;
     }
 }
 /*/媒体查询*/
