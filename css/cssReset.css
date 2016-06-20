@@ -1,28 +1,28 @@
+@charset "UTF-8";
 /* CSS reset*/
-html,body,div,span,iframe,h1,h2,h3,h4,h5,h6,p,a,img,button,
-dl,dt,dd,ul,ol,li,caption,object,input,textarea,video,audio,
-footer,header,pre,code,form,fieldset,legend,blockquote,q,
-article,aside,details,figcaption,figure,hgroup,menu,nav,section {margin:0;padding:0;border:0;font-size:100%;vertical-align:baseline;}
+html,body,div,span,h1,h2,h3,h4,h5,h6,p,a,img,dl,dt,dd,ul,ol,li,nav,footer,header,
+form,input,textarea,video,audio,iframe,button,pre,code,blockquote,q,
+fieldset,legend,caption,object,article,aside,details,figcaption,figure,hgroup,menu,section {margin:0;padding:0;border:0;font-size:100%;}
 body,button,input,select,textarea {font:14px/1.4286 "microsoft yahei",simsun,tahoma,arial,sans-serif;}
 h1,h2,h3,h4,h5,h6 {font-size:100%;font-weight:500;}
 a,ins {text-decoration:none;}
-button,input,select,textarea,:focus {outline:none;}
-audio,canvas,video {display:inline-block;*display:inline;zoom:1;}
-hr {display:block;height:1px;border:0;border-top:1px solid #ccc;margin:1em 0;padding:0;}
+audio,canvas,video {display:inline-block;*display:inline;*zoom:1;}
+article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section,summary,iframe,main {display:block;}
 abbr,acronym {border:0;font-variant:normal;}
 del {text-decoration:line-through;}
 caption,th {text-align:left;}
-blockquote,q {quotes:none;}
-blockquote:before,blockquote:after,q:before,q:after {content:'';content:none;}
 sub,sup {font-size:75%;line-height:0;position:relative;vertical-align:baseline;}
 sup {top:-0.5em;}
 sub {bottom:-0.25em;}
-article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section,summary,iframe,main {display:block;}
 img {vertical-align:middle;}
-address,caption,cite,code,dfn,th,var,em,i,time {font-style:normal;font-weight:500;}
-table,tbody,tfoot,thead,tr,th,td {margin:0;padding:0;}
-table {border-collapse:collapse;border-spacing:0;}
 ol,ul {list-style:none;}
+table {border-collapse:collapse;border-spacing:0;}
+table,tbody,tfoot,thead,tr,th,td {margin:0;padding:0;}
+address,caption,cite,code,dfn,th,var,em,i,time {font-style:normal;font-weight:500;}
+blockquote,q {quotes:none;}
+blockquote:before,blockquote:after,q:before,q:after {content:'';content:none;}
+hr {display:block;height:1px;border:0;border-top:1px solid #ccc;margin:1em 0;padding:0;}
+button,input,select,textarea,:focus {outline:none;}
 
 /* -wap*/
 img,video,audio {max-width:100%;}
@@ -46,6 +46,7 @@ html {-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border
 }
 /*/-富文本需重载*/
 /*/CSS reset*/
+
 /* 全局*/
 html, body {
     /*height: 100%;*/
@@ -65,93 +66,74 @@ a {
 a:hover {
     text-decoration: none;
 }
-.left {
+/* -scss的@function、@mixin*/
+@function rem($px) {
+@return $px / 20 + rem;
+}
+@function sprites($y,$height: 单图固定高度) {
+@return percentage($y / (合并图高度 - $height));
+}
+@mixin inline-block {
+    display: inline-block;
+    *display: inline;
+    *zoom: 1;
+}
+@mixin left {
     float: left;
     _display: inline;
 }
-.right {
+@mixin right {
     float: right;
     _display: inline;
 }
-.clearfix:after {
-    content: "";
-    display: table;
-    clear: both;
-}
-.clearfix {
+@mixin clearfix {
     *zoom: 1;
+&:after {
+     content: "";
+     display: table;
+     clear: both;
+ }
 }
-.ellipsis {
-    _width: 100%;
+@mixin ellipsis($boolen: true) {
+    @if $boolen == true {
+        _width: 100%;
+    }
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
 }
-.multi_ellipsis {
-    line-height: 1;
-    height: 2em;
+@mixin multi_ellipsis($height,$line) {
+    line-height: $height;
+    height: ($height * $line);
     display: block;
     display: -webkit-box;
     *display: block;
     overflow: hidden;
     text-overflow: ellipsis;
     -webkit-box-orient: vertical;
-    -webkit-line-clamp: 2;
+    -webkit-line-clamp: $line;
 }
+/*/-scss*/
 /*/全局*/
-/* 单大图模式*/
+
+/* 布局*/
 .full_bg {
-    background: url() #fff center 0 no-repeat;
+    background: center top no-repeat;
     min-width: 最小宽度;
     _width: 100%;
     overflow: hidden;
 }
-.full_bg .header,
-.full_bg .main {
-    background: url() center 0 no-repeat;
-    width: ;
+.full_bg .full_wrap {
+    background: center top no-repeat;
+    width: 最小宽度;
     margin: 0 auto;
     position: relative;
 }
-.footer {
-    background-color: #fff;
-    min-width: 最小宽度;
-    _width: 100%;
+.full_bg .full_wrap:before {
+    content: "";
+    display: table;
 }
-.footer .wrap {
-    width: ;
-    margin: 0 auto;
-}
-/*/单大图模式*/
-/* 多大图模式*/
-.header {
-    background: url() #fff center 0 no-repeat;
-    min-width: 最小宽度;
-    _width: 100%;
-    height: ;
-    overflow: hidden;
-}
-.main {
-    background: url() #fff center 0 no-repeat;
-    min-width: 最小宽度;
-    _width: 100%;
-    overflow: hidden;
-}
-.footer {
-    background: url() 0 0 repeat-x;
-    min-width: 最小宽度;
-    _width: 100%;
-    overflow: hidden;
-}
-.header .wrap,
-.main .wrap,
-.footer .wrap {
-    background: url() center 0 no-repeat;
-    width: ;
-    margin: 0 auto;
-    position: relative;
-}
-/*/多大图模式*/
+/*/布局*/
 
 /* wap媒体查询（320px~640px），最大width:32rem;*/
 @media (max-width: 351px) {
@@ -194,7 +176,7 @@ a:hover {
         font-size: 20px;
     }
 }
-@media (orientation: landscape) {
+@media (orientation: landscape) {  /* 横屏*/
 
 }
 /*/wap媒体查询*/
