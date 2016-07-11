@@ -14,8 +14,6 @@
         .test_wrap {
             width: 200px;
             height: 100px;
-            border: 1px solid red;
-
             overflow: hidden;
             *position: relative;
         }
@@ -27,18 +25,15 @@
             width: 100px;
             height: 100px;
             overflow: hidden;
+            *position: relative;
         }
         .test_slide_list_1 {
-            width: 100px;
-            height: 100px;
             zoom: 1;
         }
         .test_slide_list_1:after {
-            display: block;
+            content: "";
+            display: table;
             clear: both;
-            content: ".";
-            visibility: hidden;
-            height: 0;
         }
         .test_slide_list_1 li {
             width: 100px;
@@ -46,17 +41,21 @@
             float: left;
             _display: inline;
         }
+        .test_slide_list_1 li a,
+        .test_slide_list_1 li a img {
+            display: block;
+            width: 100%;
+            height: 100%;
+        }
         .test_slide_nav_1 {
             width: 120px;
             margin: 0 auto;
             zoom: 1;
         }
         .test_slide_nav_1:after {
-            display: block;
+            content: "";
+            display: table;
             clear: both;
-            content: ".";
-            visibility: hidden;
-            height: 0;
         }
         .test_slide_nav_1 li {
             border-radius: 50%;
@@ -79,18 +78,15 @@
             width: 340px;
             height: 100px;
             overflow: hidden;
+            *position: relative;
         }
         .test_slide_list_2 {
-            width: 340px;
-            height: 100px;
             zoom: 1;
         }
         .test_slide_list_2:after {
-            display: block;
+            content: "";
+            display: table;
             clear: both;
-            content: ".";
-            visibility: hidden;
-            height: 0;
         }
         .test_slide_list_2 li {
             width: 100px;
@@ -99,12 +95,75 @@
             float: left;
             _display: inline;
         }
+        .test_slide_list_2 li a,
+        .test_slide_list_2 li a img {
+            display: block;
+            width: 100%;
+            height: 100%;
+        }
         /*/轮播（左右多个）*/
+    </style>
+    <style>
+        /* 轮播（鱼眼效果滚动）*/
+        .test_slide_holder_3 {
+            width: 360px;
+            height: 140px;
+            overflow: hidden;
+            *position: relative;
+        }
+        .test_slide_list_3 {
+            zoom: 1;
+        }
+        .test_slide_list_3:after {
+            content: "";
+            display: table;
+            clear: both;
+        }
+        .test_slide_list_3 li {
+            width: 100px;
+            height: 100px;
+            margin-top: 20px;
+            margin-right: 20px;
+            float: left;
+            _display: inline;
+            padding-bottom: 20px;
+            position: relative;
+        }
+        .test_slide_list_3 li.middle {
+            width: 120px;
+            height: 120px;
+            margin-top: 0;
+        }
+        .test_slide_list_3 li:last-child { /* ie8-不支持需要在只有2个项目时候删除middle类*/
+            width: 100px;
+            height: 100px;
+            margin-top: 20px;
+        }
+        .test_slide_list_3 li a,
+        .test_slide_list_3 li a img {
+            display: block;
+            width: 100%;
+            height: 100%;
+        }
+        .test_slide_list_3 li p {
+            _width: 100%;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            line-height: 20px;
+            height: 20px;
+            text-align: center;
+        }
+        /*/轮播（鱼眼效果滚动）*/
     </style>
 </head>
 <body>
 <!-- 自动滚动-->
-<div class="test_wrap">
+<div class="test_wrap" style="border: 1px solid red;">
     <ul id="j-autoroll">
         <li>
             1.内容
@@ -128,27 +187,27 @@
 <div style="border: 1px solid red;">
     <div class="test_slide_holder_1" id="j-slide-holder-1">
         <ul class="test_slide_list_1" id="j-slide-list-1">
-            <li data-index="0" class="cur">
+            <li>
                 <a href="#">
                     <img src="../../images/1.png">
                 </a>
             </li>
-            <li data-index="1">
+            <li>
                 <a href="#">
                     <img src="../../images/2.png">
                 </a>
             </li>
-            <li data-index="2">
+            <li>
                 <a href="#">
                     <img src="../../images/3.png">
                 </a>
             </li>
-            <li data-index="3">
+            <li>
                 <a href="#">
                     <img src="../../images/4.png">
                 </a>
             </li>
-            <li data-index="4">
+            <li>
                 <a href="#">
                     <img src="../../images/github-mark.png">
                 </a>
@@ -156,43 +215,36 @@
         </ul>
     </div>
     <ul class="test_slide_nav_1" id="j-slide_nav-1">
-        <li data-index="0" class="cur"></li>
-        <li data-index="1"></li>
-        <li data-index="2"></li>
-        <li data-index="3"></li>
-        <li data-index="4"></li>
+        <li class="cur"></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
     </ul>
-    <a href="#" id="j-prevbtn-1">先前一项</a>
-    <a href="#" id="j-nextbtn-1">先后一项</a>
 </div>
 <!--/轮播（上下单个）-->
 <!-- 轮播（左右多个）-->
 <div style="border: 1px solid red;">
     <div class="test_slide_holder_2" id="j-slide-holder-2">
         <ul class="test_slide_list_2" id="j-slide-list-2">
-            <li data-index="0" class="cur">
+            <li>
                 <a href="#">
                     <img src="../../images/1.png">
                 </a>
             </li>
-            <li data-index="1">
+            <li>
                 <a href="#">
                     <img src="../../images/2.png">
                 </a>
             </li>
-            <li data-index="2">
+            <li>
                 <a href="#">
                     <img src="../../images/3.png">
                 </a>
             </li>
-            <li data-index="3">
+            <li>
                 <a href="#">
                     <img src="../../images/4.png">
-                </a>
-            </li>
-            <li data-index="4">
-                <a href="#">
-                    <img src="../../images/github-mark.png">
                 </a>
             </li>
         </ul>
@@ -201,6 +253,46 @@
     <a href="#" id="j-nextbtn-2">先后一项</a>
 </div>
 <!--/轮播（左右多个）-->
+<!-- 轮播（鱼眼效果滚动）-->
+<div style="border: 1px solid red;">
+    <div class="test_slide_holder_3" id="j-slide-holder-3">
+        <ul class="test_slide_list_3" id="j-slide-list-3">
+            <li>
+                <a href="#">
+                    <img src="../../images/1.png">
+                </a>
+                <p>1</p>
+            </li>
+            <li class="middle">
+                <a href="#">
+                    <img src="../../images/2.png">
+                </a>
+                <p>你好</p>
+            </li>
+            <li>
+                <a href="#">
+                    <img src="../../images/3.png">
+                </a>
+                <p>你好你好你好你好你好你好你好你好你好你好你好你好你好</p>
+            </li>
+            <li>
+                <a href="#">
+                    <img src="../../images/4.png">
+                </a>
+                <p>你好你好你好你好你好你好你好你好你好你好你好你好你好</p>
+            </li>
+            <li>
+                <a href="#">
+                    <img src="../../images/github-mark.png">
+                </a>
+                <p>你好你好你好你好你好你好你好你好你好你好你好你好你好</p>
+            </li>
+        </ul>
+    </div>
+    <a href="#" id="j-prevbtn-3">先前一项</a>
+    <a href="#" id="j-nextbtn-3">先后一项</a>
+</div>
+<!--/轮播（鱼眼效果滚动）-->
 
 <script type="text/javascript" src="js/jquery.min.1.7.2.js"></script>
 <script type="text/javascript" src="js/ks.marquee.js"></script>
@@ -208,20 +300,16 @@
     $(function () {
         /* 自动滚动*/
         ue.marquee({
+            scrolltarget: '#j-autoroll', /* 鼠标hover滚动滚轮切换内容的对象*/
             hovertarget: '#j-autoroll', /* 鼠标hover停止切换的对象*/
             target: '#j-autoroll', /* 滚动对象 一般为 ul*/
             items: '#j-autoroll li', /* 滚动的详细列表*/
             delay: 1000, /* 切换间隔时间*/
             speed: 300, /* 切换速度*/
-            scrollnum: 1, /* 每次滚动个数*/
             autoplay: true, /* 是否自动播放*/
             loop: 1, /* 循环模式 1 无限循环 0 不循环*/
             mode: 0, /* 0表示竖直方向滚动 1 表示水平方向滚动*/
-            direction: 0, /* 表示默认的滚动方向0向上或者向左 1表示向下或者向右*/
-            afterSlide: function () {    /* 每滚动一个完的回调函数*/
-            },
-            beforeSlide: function () {   /* 每滚动一个之前的回调函数*/
-            }
+            direction: 0    /* 表示默认的滚动方向0向上或者向左 1表示向下或者向右*/
         });
 
         /* 轮播（上下单个）*/
@@ -231,14 +319,11 @@
             items: '#j-slide-list-1 li',
             delay: 1000,
             speed: 300,
-            scrollnum: 1,
             autoplay: true,
             loop: 1,
             mode: 0,
             direction: 0,
-            prevbtn: '#j-prevbtn-1', /* 向前一项*/
-            nextbtn: '#j-nextbtn-1', /* 向后一项*/
-            trigger: "mouseover", /* [click|mouseover]*/
+            trigger: "mouseover", /* 鼠标触发方式[click|mouseover]*/
             gotobtn: "#j-slide_nav-1 li", /* 序号导航对象*/
             currentclass: "cur" /* 当前滚动的导航按钮的class*/
         });
@@ -250,15 +335,69 @@
             items: '#j-slide-list-2 li',
             delay: 1000,
             speed: 300,
-            scrollnum: 1,
             autoplay: true,
             loop: 1,
             mode: 1,
-            direction: 0,
-            prevbtn: '#j-prevbtn-2',
-            nextbtn: '#j-nextbtn-2',
+            direction: 1,
             trigger: "click",
-            currentclass: "cur"
+            currentclass: "cur",
+            scrollnum: 2, /* 每次滚动个数*/
+            visiblenum: 3, /* 可见个数*/
+            prevbtn: '#j-prevbtn-2', /* 向前一项按钮*/
+            nextbtn: '#j-nextbtn-2', /* 向后一项按钮*/
+            afterSlide: function () {   /* 每滚动一个完的回调函数*/
+                //                console.log(this);
+            },
+            beforeSlide: function () {  /* 每滚动一个之前的回调函数*/
+            }
+        });
+
+        /* 轮播（鱼眼效果滚动）*/
+        ue.marquee({
+            hovertarget: "#j-slide-holder-3",
+            target: '#j-slide-list-3',
+            items: '#j-slide-list-3 li',
+            delay: 1000,
+            speed: 300,
+            autoplay: false,
+            loop: 1,
+            mode: 1,
+            direction: 0,
+            trigger: "click",
+            scrollnum: 1,
+            visiblenum: 3,
+            prevbtn: '#j-prevbtn-3', /* 向前一项按钮*/
+            nextbtn: '#j-nextbtn-3', /* 向后一项按钮*/
+            beforePrev: function () {    /* 滚动到上一个开始的回调函数*/
+                var $bigger = $(this.items[1]);
+
+                $bigger.siblings().animate({
+                    width: "100px",
+                    height: "100px",
+                    marginTop: "20px"
+                }, this.options.speed);
+
+                $bigger.animate({
+                    width: "120px",
+                    height: "120px",
+                    marginTop: "0"
+                }, this.options.speed);
+            },
+            beforeNext: function () {    /* 滚动到下一个开始的回调函数*/
+                var $bigger = $(this.items[2]);
+
+                $bigger.siblings().animate({
+                    width: "100px",
+                    height: "100px",
+                    marginTop: "20px"
+                }, this.options.speed);
+
+                $bigger.animate({
+                    width: "120px",
+                    height: "120px",
+                    marginTop: "0"
+                }, this.options.speed);
+            }
         });
     })
 </script>
