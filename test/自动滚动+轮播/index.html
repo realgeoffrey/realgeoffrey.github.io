@@ -134,7 +134,7 @@
             height: 120px;
             margin-top: 0;
         }
-        .test_slide_list_3 li:last-child { /* ie8-不支持需要在只有2个项目时候删除middle类*/
+        .test_slide_list_3 li:last-child {
             width: 100px;
             height: 100px;
             margin-top: 20px;
@@ -263,7 +263,7 @@
                 </a>
                 <p>1</p>
             </li>
-            <li class="middle">
+            <li>
                 <a href="#">
                     <img src="../../images/2.png">
                 </a>
@@ -273,7 +273,7 @@
                 <a href="#">
                     <img src="../../images/3.png">
                 </a>
-                <p>你好你好你好你好你好你好你好你好你好你好你好你好你好</p>
+                <p>3</p>
             </li>
             <li>
                 <a href="#">
@@ -285,7 +285,7 @@
                 <a href="#">
                     <img src="../../images/github-mark.png">
                 </a>
-                <p>你好你好你好你好你好你好你好你好你好你好你好你好你好</p>
+                <p>5</p>
             </li>
         </ul>
     </div>
@@ -353,14 +353,24 @@
         });
 
         /* 轮播（鱼眼效果滚动）*/
+        var marqueeAutoplay = true,
+            marqueeLoop = 1,
+            $slideList = $('#j-slide-list-3').find('li');
+
+        if ($slideList.length <= 3) {
+            marqueeAutoplay = false;
+            marqueeLoop = 0;
+        } else {
+            $slideList.eq(1).addClass('middle');
+        }
         ue.marquee({
             hovertarget: "#j-slide-holder-3",
             target: '#j-slide-list-3',
             items: '#j-slide-list-3 li',
             delay: 1000,
             speed: 300,
-            autoplay: false,
-            loop: 1,
+            autoplay: marqueeAutoplay,
+            loop: marqueeLoop,
             mode: 1,
             direction: 0,
             trigger: "click",
