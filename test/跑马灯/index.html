@@ -10,33 +10,62 @@
     <title>跑马灯</title>
     <link href="../../css/cssReset.css" type="text/css" rel="stylesheet">
     <style>
-        .test_wrap {
+        .test_wrap_1,
+        .test_wrap_2 {
             width: 200px;
             height: 100px;
             border: 1px solid red;
             overflow: hidden;
         }
-        .test_wrap li {
-            height: 2em;    /* 固定li不会导致跳动*/
+        .test_wrap_1 li {
+            height: 2em;
+            line-height: 1em;
+            overflow: hidden;
+        }
+        .test_wrap_2 li {
+            line-height: 1em;
         }
     </style>
 </head>
 <body>
-<div class="test_wrap">
-    <ul id="j-comment">
+<div class="test_wrap_1">
+    <ul id="j-comment-1">
+        <!-- li高度要固定-->
         <li>
             1.内容
         </li>
         <li>
-            2.内容
+            2.内容内容内容内容内容内容内容内容内容内容内容内容内容内.哈哈哈2
         </li>
         <li>
             3.内容
         </li>
         <li>
-            4.内容
+            4.内容end.
         </li>
     </ul>
+</div>
+
+<br>
+
+<div class="test_wrap_2">
+    <!-- 多嵌套一层，滚动重复的ul-->
+    <div id="j-comment-2">
+        <ul>
+            <li>
+                1.内容内容内容内容内容内容内容内容内容内容内容内容内容内.哈哈哈1
+            </li>
+            <li>
+                2.内容
+            </li>
+            <li>
+                3.内容内容内容内容内容内容内容内容内容内容内容内容内容内.哈哈哈3
+            </li>
+            <li>
+                4.内容end.
+            </li>
+        </ul>
+    </div>
 </div>
 
 <script type="text/javascript" src="js/jquery.min.1.7.2.js"></script>
@@ -45,9 +74,9 @@
     $(function () {
         /* 跑马灯滚动*/
         ue.marqueeNew({
-            target: '#j-comment', /* 滚动对象*/
-            items: '#j-comment li', /* 滚动项*/
-            speed: 1, /* 滚动速度，像素*/
+            target: '#j-comment-1', /* 滚动对象*/
+            items: '#j-comment-1 li', /* 滚动项*/
+            speed: 2, /* 滚动速度，像素*/
             direction: ue.marqueeNew.UP    /* 滚动方向 [ue.marqueeNew.LEFT | ue.marqueeNew.RIGHT | ue.marqueeNew.UP | ue.marqueeNew.DOWN]*/
             /*
              leftbtn : "",   /!* 左移按钮*!/
@@ -55,6 +84,13 @@
              movelength: 100,    /!* 每次移动长度*!/
              movetime: 1, /!* 移动速度*!/
              */
+        });
+
+        ue.marqueeNew({
+            target: '#j-comment-2',
+            items: '#j-comment-2 ul',
+            speed: 2,
+            direction: ue.marqueeNew.UP
         });
     })
 </script>
