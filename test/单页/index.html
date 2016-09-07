@@ -9,102 +9,178 @@
     <link rel="shortcut icon" type="image/ico" href="../../favicon.ico">
     <title>单页</title>
     <link href="../../css/cssReset.css" type="text/css" rel="stylesheet">
-    <link href="jquery.fullpage.min.css" type="text/css" rel="stylesheet"><!-- 使用slide才必须加此css-->
+    <link href="css/jquery.fullpage.min.css" type="text/css" rel="stylesheet"><!-- 使用slide才必须加此css-->
+    <style>
+        .loading {
+            position: fixed;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background-color: rgba(0, 0, 0, .8);
+            color: #fff;
+            display: none;
+        }
+    </style>
 </head>
 <body>
 
 <div id="j-fullpage">
-    <div class="section" data-anchor="section1">
-        <div class="slide" data-anchor="slide1">
-            第一页内容：滑块1
-        </div>
-        <div class="slide" data-anchor="slide2">
-            第一页内容：滑块2
-        </div>
-        <div class="slide" data-anchor="slide3">
-            第一页内容：滑块3
-        </div>
-    </div>
-    <div class="section" data-anchor="section2">
-        第二页内容
-    </div>
-    <div class="section" data-anchor="section3">
-        第三页内容
+    <div class="section" data-anchor="loading">
+        ajax-loading
     </div>
 </div>
 
-
-<div style="position: fixed; top: 50%;left: 50%;">
-    <a href="#" id="reBuild">reBuild()</a>|
-    <a href="#" id="addDom_1">addDom_1</a>|
-    <a href="#" id="addDom_2">addDom_2</a>
+<div class="loading" id="j-loading">
+    loading...
 </div>
 
-<script type="text/javascript" src="js/jquery.min.1.7.2.js"></script>
-<!--<script type="text/javascript" src="../../js/jquery-2.2.3.min.js"></script>-->
-<script type="text/javascript" src="js/jquery.fullPage.min.js"></script>
+<script id="j-tpl-section" type="text/html">
+    <%for(var i = 0; i< sectionArr.length; i++) {%>
+    <div class="section" data-anchor="<%= sectionArr[i].id%>">
+        <%for(var j = 0; j< sectionArr[i].slide.length; j++) {%>
+        <div class="slide">
+            <%= sectionArr[i].slide[j].text%>
+        </div>
+        <%}%>
+    </div>
+    <%}%>
+</script>
+
+
+<!-- 测试数据-->
+<script type="text/javascript" src="../../js/mock-min.js"></script>
+<script>
+    Mock.setup({timeout: '200-2000'});
+
+    Mock.mock(new RegExp('testUrl'), {
+        'code': 200,
+        'next|10': '',
+        'result|1-3': [{
+            'id|+1': 1,
+            'slide|1-3': [{
+                'text': '@CWORD(1,30)'
+            }]
+        }]
+    });
+</script>
+<!--/测试数据-->
+
+<!--<script type="text/javascript" src="js/jquery.min.1.7.2.js"></script>-->
+<script type="text/javascript" src="../../js/jquery-3.1.0.min.js"></script>
+<script type="text/javascript" src="js/jquery.fullpage.min.js"></script>
 <script type="text/javascript" src="js/baiduTemplate.js"></script>
+<script>
+    function isTouch() {
+        return navigator.userAgent.match(/(iPhone|iPod|iPad|Android|playbook|silk|BlackBerry|BB10|Windows Phone|Tizen|Bada|webOS|IEMobile|Opera Mini)/) || (('ontouchstart' in window) || (navigator.msMaxTouchPoints > 0) || (navigator.maxTouchPoints));
+    }
 
-<script id="j-template-section" type="text/html">
-    <div class="section fp-section">
-        <div class="fp-slides">
-            <div class="fp-slidesContainer" >
-                <div class="slide fp-slide fp-table">
-                    <div class="fp-tableCell" >
-                        第一页内容：滑块1
-                    </div>
-                </div>
-                <div class="slide fp-slide fp-table">
-                    <div class="fp-tableCell">
-                        第一页内容：滑块2
-                    </div>
-                </div>
-                <div class="slide fp-slide fp-table">
-                    <div class="fp-tableCell">
-                        第一页内容：滑块3
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</script>
-<script id="j-template-section-2" type="text/html">
-<div class="section">
-    <div class="slide">
-        第一页内容：滑块1
-    </div>
-    <div class="slide">
-        第一页内容：滑块2
-    </div>
-    <div class="slide">
-        第一页内容：滑块3
-    </div>
-</div>
-</script>
+    function isLoading(boolean) {
+        var $loading = $('#j-loading');
 
-<script type="text/javascript">
-    $(function () {
-        /* 单页滚动*/
-        $('#j-fullpage').fullpage({
-            navigation: true,
-            slidesNavigation: true
-        });
+        if (boolean) {
+            $loading.show();
+            if (typeof $.fn.fullpage.setAllowScrolling === 'function' && typeof $.fn.fullpage.setKeyboardScrolling === 'function') {
+                $.fn.fullpage.setAllowScrolling(false);
+                $.fn.fullpage.setKeyboardScrolling(false);
+            }
 
-        $('#reBuild').on('click', function () {
-            $.fn.fullpage.reBuild();
-            return false;
-        });
+        } else {
+            $loading.hide();
+            if (typeof $.fn.fullpage.setAllowScrolling === 'function' && typeof $.fn.fullpage.setKeyboardScrolling === 'function') {
+                $.fn.fullpage.setAllowScrolling(true);
+                $.fn.fullpage.setKeyboardScrolling(true);
+            }
+        }
+    }
 
-        $('#addDom_1').on('click', function () {
-            $('#j-fullpage').append(baidu.template('j-template-section', {}));
-        });
-        $('#addDom_2').on('click', function () {
+    function ajaxLoad(para) {
+        var myself = arguments.callee;
+
+        isLoading(true);
+
+        $.ajax({
+            url: 'testUrl',
+            dataType: 'json',
+            data: {
+                para: para
+            }
+        }).done(function (data) {
+            console.log(data);
+
             $.fn.fullpage.destroy('all');
-            $('#j-fullpage').append(baidu.template('j-template-section-2', {}));
-            $('#j-fullpage').fullpage({            });
-            $.fn.fullpage.silentMoveTo('section2','slide1')
+            $('[data-anchor=loading]').before(baidu.template('j-tpl-section', {sectionArr: data.result}));
+            if (isTouch()) {
+                window.history.replaceState(undefined, undefined, '#');
+            } else {
+                window.location.replace('#');
+            }
+
+            $('#j-fullpage').fullpage({
+                navigation: true,
+                slidesNavigation: true,
+
+                animateAnchor: false,
+                recordHistory: false,
+                afterLoad: function (anchorLink, index) {
+                    console.log(anchorLink, index, this);
+
+                    if (anchorLink === 'loading') {
+                        myself(data.next);
+                    }
+                }
+            });
+            $.fn.fullpage.silentMoveTo(data.result[0].id);
+        }).fail(function () {
+            console.log('网络错误');
+        }).always(function () {
+            isLoading(false);
+        })
+    }
+
+
+    $(function () {
+        isLoading(true);
+
+        $.ajax({
+            url: 'testUrl',
+            dataType: 'json',
+            data: {
+                para: window.location.hash
+            }
+        }).done(function (data) {
+            console.log(data);
+
+            $('[data-anchor=loading]').before(baidu.template('j-tpl-section', {sectionArr: data.result}));
+
+            if (isTouch()) {
+                window.history.replaceState(undefined, undefined, '#');
+            } else {
+                window.location.replace('#');
+            }
+
+            $('#j-fullpage').fullpage({
+                navigation: true,
+                slidesNavigation: true,
+
+                animateAnchor: false,
+                recordHistory: false,
+                afterLoad: function (anchorLink, index) {
+                    console.log(anchorLink, index, this);
+
+                    if (anchorLink === 'loading') {
+                        ajaxLoad(data.next);
+                    }
+                }
+            });
+            /*$.fn.fullpage.silentMoveTo(1);*/
+        }).fail(function () {
+            console.log('网络错误');
+        }).always(function () {
+            isLoading(false);
         });
-    })
+    });
 </script>
+<!--/测试-->
 </body>
 </html>
