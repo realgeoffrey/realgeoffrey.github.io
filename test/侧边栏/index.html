@@ -8,10 +8,10 @@
     <meta name="description" content="">
     <link rel="shortcut icon" type="image/ico" href="../../favicon.ico">
     <title>侧边栏</title>
-    <link href="../../css/cssReset.css" type="text/css" rel="stylesheet">
+    <link href="../../css/pc.css" type="text/css" rel="stylesheet">
     <style>
         .test_side_nav {
-            width: 100px;   /* 插件定位必写*/
+            width: 50px;   /* 插件定位必写*/
             visibility: hidden;
             opacity: 0;
             transition: 1s;
@@ -20,7 +20,9 @@
     </style>
 </head>
 <body>
-<div style="height: 1000px;width: 1000px;margin: 0 auto;" id="j-main"></div>
+<div style="height: 1000px;width: 1000px;margin: 0 auto;background-color: #f0f0f0" id="j-main">
+    main
+</div>
 <div class="test_side_nav" id="j-side-nav">
     <p>内容</p>
     <a href="#" id="j-totop">
@@ -39,7 +41,7 @@
         ue.gototop({
             relative: $("#j-main"), /* 相对定位的对象*/
             target: $('#j-side-nav'), /* 侧边栏对象*/
-            bottom: 150, /* 距离底部或者顶部的高度*/
+            top: 5, /* 距离底部或者顶部的高度*/
             left: 10, /* 距离相对定位对象的距离*/
             btn: $("#j-totop"), /* 返回顶部的按钮*/
             scrollTop: 100, /* 滚动条滚动到这个位置显示btn*/

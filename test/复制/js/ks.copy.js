@@ -38,7 +38,7 @@
         ops = this.options = $.extend(_default, ops);
         this.init();
         if (!this.is_init){
-            ZeroClipboard.setMoviePath( 'http://s1.img4399.com/score/js/ZeroClipboard.swf?1769' ); //和copy.php不在同一目录需设置setMoviePath
+            ZeroClipboard.setMoviePath( 'http://realgeoffrey.github.io/test/复制/js/flash/ZeroClipboard.swf' ); //和copy.php不在同一目录需设置setMoviePath
             //ZeroClipboard.setMoviePath( 'http://s1.img4399.com/score/js/ZeroClipboard10.swf?1769' );
             this.is_init = true;
         }
