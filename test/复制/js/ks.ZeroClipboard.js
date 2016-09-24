@@ -15,7 +15,7 @@
 		
 		version: "1.0.7",
 		clients: {}, // registered upload clients on page, indexed by id
-		moviePath: 'http://s1.img4399.com/score/js/ZeroClipboard.swf?1769', // URL to movie
+		moviePath: 'http://realgeoffrey.github.io/test/复制/js/flash/ZeroClipboard.swf', // URL to movie
 		nextId: 1, // ID of next movie
 		
 		$: function(thingy) {
