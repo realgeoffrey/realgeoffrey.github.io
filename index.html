@@ -10,23 +10,114 @@
     <meta name="description" content="">
     <link rel="shortcut icon" type="image/ico" href="favicon.ico">
     <title>某一个前端工程师</title>
-    <link href="css/pc.css" type="text/css" rel="stylesheet">
+    <link href="css/wap.css" type="text/css" rel="stylesheet">
     <style>
         html, body {
             height: 100%;
         }
+
+        /* 导航*/
         a {
             position: relative;
             font-size: 20px;
+            z-index: 2;
+        }
+
+        /* 视差插件*/
+        .m-parallax {
+            width: 100px;
+            height: 100px;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            margin-top: -50px;
+            margin-left: -50px;
+            z-index: 1;
+        }
+        .m-parallax img {
+            position: absolute;
+            pointer-events: none;
+        }
+        .m-parallax img#j-parallax-0 {
+            top: 0px;
+            left: 0px;
+        }
+        .m-parallax img#j-parallax-1 {
+            top: 31px;
+            left: 26px;
+        }
+        .m-parallax img#j-parallax-2 {
+            top: 29px;
+            left: 56px;
+        }
+        .m-parallax img#j-parallax-3 {
+            top: 38px;
+            left: 26px;
+        }
+        .m-parallax img#j-parallax-4 {
+            top: 35px;
+            left: 56px;
+        }
+        .m-parallax img#j-parallax-5 {
+            top: 41px;
+            left: 34px;
+        }
+        .m-parallax img#j-parallax-6 {
+            top: 39px;
+            left: 63px;
+        }
+
+        /* canvas插件*/
+        canvas {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            z-index: 0;
         }
     </style>
+    <script type="text/javascript" src="js/globalObj.js"></script>
 </head>
 <body>
-<canvas id="j-canvas" style="position: absolute;top: 0;bottom: 0;left: 0;right: 0;"></canvas>
 
+<!-- 导航-->
 <a href="sprites/index.html">css雪碧图生成工具</a>
 <a href="test/index.html">组件模块</a>
 
-<script type="text/javascript" src="js/canvas.js"></script>
+<!-- 视差插件-->
+<div class="m-parallax">
+    <img src="images/parallax/0.png" width="100" height="100" alt="脸" id="j-parallax-0">
+    <img src="images/parallax/1.png" width="16" height="4" alt="左眉" id="j-parallax-1">
+    <img src="images/parallax/2.png" width="16" height="4" alt="右眉" id="j-parallax-2">
+    <img src="images/parallax/3.png" width="19" height="11" alt="左眼" id="j-parallax-3">
+    <img src="images/parallax/4.png" width="18" height="12" alt="右眼" id="j-parallax-4">
+    <img src="images/parallax/5.png" width="3" height="3" alt="左珠" id="j-parallax-5">
+    <img src="images/parallax/5.png" width="3" height="3" alt="右珠" id="j-parallax-6">
+</div>
+<script type="text/javascript" src="js/jquery-3.1.1.min.js"></script>
+<script type="text/javascript" src="js/plax.min.js"></script>
+<script type="text/javascript">
+    $(function () {
+        $('#j-parallax-0').plaxify({"xRange": 5, "yRange": 10, "invert": true});
+        $('#j-parallax-1').plaxify({"xRange": 5, "yRange": 10});
+        $('#j-parallax-2').plaxify({"xRange": 5, "yRange": 10});
+        $('#j-parallax-3').plaxify({"xRange": 10, "yRange": 8});
+        $('#j-parallax-4').plaxify({"xRange": 10, "yRange": 8});
+        $('#j-parallax-5').plaxify({"xRange": 18, "yRange": 10});
+        $('#j-parallax-6').plaxify({"xRange": 15, "yRange": 10});
+
+        $.plax.enable();
+    });
+</script>
+
+<!-- canvas插件-->
+<script>
+    if (!globalObj.SnifBrowserObj.isMobile) {
+        $('body').append('<canvas id="j-canvas"></canvas>');
+        document.write("<script src='js/canvas.js'><\/script>");
+    }
+</script>
+
 </body>
 </html>
