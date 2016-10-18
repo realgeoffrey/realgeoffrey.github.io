@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="renderer" content="webkit">
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <link rel="shortcut icon" type="image/ico" href="../../../favicon.ico">
+    <title>二维码</title>
+    <link href="../../../src/css/pc.css" type="text/css" rel="stylesheet">
+    <style>
+        .test_qrcode {
+            width: 100px;
+            height: 100px;
+            visibility: hidden; /* 兼容ie6做法*/
+        }
+    </style>
+</head>
+<body>
+
+<a href="#" id="j-show-qrcode">hover展示qrcode</a>
+
+<div class="test_qrcode" id="j-qrcode"></div>
+
+<dl>
+    <dt>Tips:</dt>
+    <dd>
+        <p>1. 标签display:none;的情况下无法进行格式化（visibility:hidden;可以渲染）。</p>
+        <p>2. ie6、7、8下，渲染出来的二维码高宽会缩小一圈。</p>
+    </dd>
+</dl>
+
+<script type="text/javascript" src="js/jquery.min.1.7.2.js"></script>
+<script type="text/javascript" src="js/qrcode.min.js"></script>
+<script type="text/javascript">
+    $(function () {
+        /* 二维码*/
+        new QRCode('j-qrcode', {
+            text: '网址',
+            width: 100,
+            height: 100,
+            colorDark: "#000",
+            colorLight: "#fff",
+            correctLevel: QRCode.CorrectLevel.M
+        });
+
+        $('#j-qrcode').hide().css('visibility', 'visible'); /* 兼容ie6做法*/
+
+        $(document).on('mouseenter', '#j-show-qrcode', function () {
+            $('#j-qrcode').show();
+        }).on('mouseleave', '#j-show-qrcode', function () {
+            $('#j-qrcode').hide();
+        });
+    })
+</script>
+</body>
+</html>

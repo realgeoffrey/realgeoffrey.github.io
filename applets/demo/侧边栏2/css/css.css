@@ -1,0 +1,182 @@
+.m-side-nav {
+  *zoom: 1;
+  visibility: hidden;
+  opacity: 0;
+  transition: 1s;
+  z-index: 1;
+  width: 64px;
+}
+.m-side-nav:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.m-side-nav-mini {
+  float: right;
+  _display: inline;
+  width: 38px;
+}
+.m-side-nav-mini li {
+  width: 38px;
+  height: 38px;
+  margin-bottom: 10px;
+}
+.m-side-nav-mini li a {
+  display: block;
+  *cursor: pointer;
+}
+.m-side-nav-mini li a dl {
+  width: 38px;
+  height: 38px;
+}
+.m-side-nav-mini li a dt {
+  width: 38px;
+  height: 38px;
+  background: transparent;
+}
+.m-side-nav-mini li a dd {
+  font-size: 12px;
+  color: #fff;
+  text-align: center;
+  padding: 4px 0;
+  height: 30px;
+  line-height: 15px;
+  display: none;
+}
+.m-side-nav-mini li a.piece_1 dt {
+  background: url(https://placehold.it/38/f00) no-repeat;
+}
+.m-side-nav-mini li a.piece_1 dd {
+  background-color: #f9b57e;
+}
+.m-side-nav-mini li a.piece_2 dt {
+  background: url(https://placehold.it/38/f0f) no-repeat;
+}
+.m-side-nav-mini li a.piece_2 dd {
+  background-color: #44b3f8;
+}
+.m-side-nav-mini li a.piece_3 dt {
+  background: url(https://placehold.it/38/00f) no-repeat;
+}
+.m-side-nav-mini li a.piece_3 dd {
+  background-color: #44b3f8;
+}
+.m-side-nav-mini li a.piece_4 dt {
+  background: url(https://placehold.it/38/0f0) no-repeat;
+}
+.m-side-nav-mini li a.piece_4 dd {
+  background-color: #f96d6c;
+}
+.m-side-nav-mini li .piece_ad {
+  display: block;
+  background-color: transparent;
+  position: relative;
+  text-align: center;
+}
+.m-side-nav-mini li .piece_ad img {
+  display: inline-block;
+  *display: inline;
+  *zoom: 1;
+  max-width: none;
+}
+.m-side-nav-mini li a.piece_ad {
+  *cursor: pointer;
+}
+
+.m-side-nav-normal {
+  float: right;
+  _display: inline;
+  width: 64px;
+}
+.m-side-nav-normal li {
+  width: 64px;
+  height: 58px;
+  margin-bottom: 10px;
+}
+.m-side-nav-normal li a {
+  display: block;
+  padding: 6px 0 5px 0;
+  border: 1px solid #ddd;
+  background-color: #fff;
+  *cursor: pointer;
+}
+.m-side-nav-normal li a dt {
+  width: 27px;
+  height: 27px;
+  background: transparent;
+  margin: 0 auto;
+}
+.m-side-nav-normal li a dd {
+  height: 18px;
+  line-height: 18px;
+  font-size: 12px;
+  color: #333;
+  text-align: center;
+  display: block;
+}
+.m-side-nav-normal li a:hover {
+  text-decoration: none;
+}
+.m-side-nav-normal li a:hover dd {
+  color: #fff;
+}
+.m-side-nav-normal li a.piece_1 dt {
+  background: url(https://placehold.it/27/f00) no-repeat;
+}
+.m-side-nav-normal li a.piece_1:hover {
+  border-color: #f9b57e;
+  background-color: #f9b57e;
+}
+.m-side-nav-normal li a.piece_1:hover dt {
+  background: url(https://placehold.it/27/f00ccc) no-repeat;
+}
+.m-side-nav-normal li a.piece_2 dt {
+  background: url(https://placehold.it/27/f0f) no-repeat;
+}
+.m-side-nav-normal li a.piece_2:hover {
+  border-color: #44b3f8;
+  background-color: #44b3f8;
+}
+.m-side-nav-normal li a.piece_2:hover dt {
+  background: url(https://placehold.it/27/f0fccc) no-repeat;
+}
+.m-side-nav-normal li a.piece_3 dt {
+  background: url(https://placehold.it/27/00f) no-repeat;
+}
+.m-side-nav-normal li a.piece_3:hover {
+  border-color: #44b3f8;
+  background-color: #44b3f8;
+}
+.m-side-nav-normal li a.piece_3:hover dt {
+  background: url(https://placehold.it/27/00fccc) no-repeat;
+}
+.m-side-nav-normal li a.piece_4 dt {
+  background: url(https://placehold.it/27/0f0) no-repeat;
+}
+.m-side-nav-normal li a.piece_4:hover {
+  border-color: #f96d6c;
+  background-color: #f96d6c;
+}
+.m-side-nav-normal li a.piece_4:hover dt {
+  background: url(https://placehold.it/27/0f0ccc) no-repeat;
+}
+.m-side-nav-normal li .piece_ad {
+  display: block;
+  padding: 0;
+  border: 0;
+  background-color: transparent;
+  position: relative;
+  text-align: center;
+}
+.m-side-nav-normal li .piece_ad img {
+  display: inline-block;
+  *display: inline;
+  *zoom: 1;
+  max-width: none;
+}
+.m-side-nav-normal li a.piece_ad {
+  *cursor: pointer;
+}
+
+/*# sourceMappingURL=css.css.map */
