@@ -1,0 +1,64 @@
+html, body {
+    height: 100%;
+}
+
+/* 导航*/
+a {
+    position: relative;
+    font-size: 20px;
+    z-index: 2;
+}
+
+/* 视差插件*/
+.m-parallax {
+    width: 100px;
+    height: 100px;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    margin-top: -50px;
+    margin-left: -50px;
+    z-index: 1;
+}
+.m-parallax img {
+    position: absolute;
+    pointer-events: none;
+}
+.m-parallax img#j-parallax-0 {
+    top: 0px;
+    left: 0px;
+}
+.m-parallax img#j-parallax-1 {
+    top: 31px;
+    left: 26px;
+}
+.m-parallax img#j-parallax-2 {
+    top: 29px;
+    left: 56px;
+}
+.m-parallax img#j-parallax-3 {
+    top: 38px;
+    left: 26px;
+}
+.m-parallax img#j-parallax-4 {
+    top: 35px;
+    left: 56px;
+}
+.m-parallax img#j-parallax-5 {
+    top: 41px;
+    left: 34px;
+}
+.m-parallax img#j-parallax-6 {
+    top: 39px;
+    left: 63px;
+}
+
+/* canvas插件*/
+canvas {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 0;
+}
