@@ -39,6 +39,23 @@
     <%}%>
 </script>
 
+<!-- 测试数据-->
+<script type="text/javascript" src="../../../js/mock-min.js"></script>
+<script>
+    Mock.setup({timeout: '10-1000'});
+
+    Mock.mock(new RegExp('testUrl'), {
+        'code': 200,
+        'result|5-15': [{
+            'url': '@url()',
+            'img': '@dataImage()',
+            'height': '@integer(100, 300)',
+            'title': '@cword(1,10)'
+        }]
+    });
+</script>
+<!--/测试数据-->
+
 <script type="text/javascript" src="js/jquery.min.1.7.2.js"></script>
 <script type="text/javascript" src="js/waterfall.min.js"></script>
 <script type="text/javascript" src="js/baiduTemplate.js"></script>
@@ -47,9 +64,9 @@
         var waterfallObj = $('#j-waterfall').waterfall({
             itemCls: 'j-waterfall-item', /* 瀑布流数据块class*/
             colWidth: 200, /* 瀑布流每列的宽度*/
-            gutterWidth: 20, /* 数据块水平间距*/
-            gutterHeight: 30, /* 数据块垂直间距*/
-            path: ['data/index.json?page=', ''], /* 瀑布流数据分页url，可以是数组如["/popular/page/", "/"] => "/popular/page/1/"，或者是根据分页返回一个url方法如：function(page) { return '/populr/page/' + page; } => "/popular/page/1/"*/
+            gutterWidth: 15, /* 数据块水平间距*/
+            gutterHeight: 20, /* 数据块垂直间距*/
+            path: ['testUrl' + '?page=', ''], /* 瀑布流数据分页url，可以是数组如["/popular/page/", "/"] => "/popular/page/1/"，或者是根据分页返回一个url方法如：function(page) { return '/populr/page/' + page; } => "/popular/page/1/"*/
             params: {para1: 'abc', para2: 123}, /* 请求跟随的参数*/
             maxPage: 99, /* 最多显示多少页数据,默认undefined，无限下拉*/
             bufferPixel: -50, /* 滚动时, 窗口底部到瀑布流最小高度列的距离 > bufferPixel时, 自动加载新数据*/
