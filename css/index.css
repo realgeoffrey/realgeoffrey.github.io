@@ -4,8 +4,8 @@ html, body {
 
 /* 导航*/
 a {
+    display: block;
     position: relative;
-    font-size: 20px;
     z-index: 2;
 }
 
@@ -19,38 +19,41 @@ a {
     margin-top: -50px;
     margin-left: -50px;
     z-index: 1;
+    display: none;
 }
-.m-parallax img {
-    position: absolute;
+.m-parallax li {
+    width: 100px;
+    height: 100px;
     pointer-events: none;
+    font-size: 0;
+    overflow: hidden;
 }
-.m-parallax img#j-parallax-0 {
-    top: 0px;
-    left: 0px;
+.m-parallax li.i-1 {
+    background: url(../images/sprites.png) 0 0 no-repeat;
 }
-.m-parallax img#j-parallax-1 {
-    top: 31px;
-    left: 26px;
+.m-parallax li.i-2 {
+    background: url(../images/sprites.png) 0 -102px no-repeat;
 }
-.m-parallax img#j-parallax-2 {
-    top: 29px;
-    left: 56px;
+.m-parallax li.i-3 {
+    background: url(../images/sprites.png) 0 -204px no-repeat;
 }
-.m-parallax img#j-parallax-3 {
-    top: 38px;
-    left: 26px;
+.m-parallax li.i-4 {
+    background: url(../images/sprites.png) 0 -306px no-repeat;
 }
-.m-parallax img#j-parallax-4 {
-    top: 35px;
-    left: 56px;
+.m-parallax li.i-5 {
+    background: url(../images/sprites.png) 0 -408px no-repeat;
 }
-.m-parallax img#j-parallax-5 {
-    top: 41px;
-    left: 34px;
+.m-parallax li.i-6 {
+    background: url(../images/sprites.png) 0 -510px no-repeat;
 }
-.m-parallax img#j-parallax-6 {
-    top: 39px;
-    left: 63px;
+.m-parallax li.i-7 {
+    background: url(../images/sprites.png) 0 -612px no-repeat;
+}
+.m-parallax li.i-8 {
+    background: url(../images/sprites.png) 0 -714px no-repeat;
+}
+.m-parallax li.i-9 {
+    background: url(../images/sprites.png) 0 -816px no-repeat;
 }
 
 /* canvas插件*/
