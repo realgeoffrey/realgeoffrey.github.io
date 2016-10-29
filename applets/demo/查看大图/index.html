@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="renderer" content="webkit">
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <link rel="shortcut icon" type="image/ico" href="../../../favicon.ico">
+    <title>查看大图</title>
+    <link href="../../../src/css/pc.css" type="text/css" rel="stylesheet">
+    <link href="css_img/jquery.fancybox.css" type="text/css" rel="stylesheet">
+</head>
+<body>
+
+<a href="http://placehold.it/200?text=0大图" class="j-fancybox-1" rel="group_1" title="title 0">
+    小图0
+</a>
+<a href="http://placehold.it/210?text=1大图" class="j-fancybox-1" rel="group_1" title="title 1">
+    小图1
+</a>
+<a href="http://placehold.it/220?text=2大图" class="j-fancybox-1" rel="group_1" title="title 2">
+    小图2
+</a>
+<a href="http://placehold.it/230?text=3大图" class="j-fancybox-1" rel="group_1" title="title 3">
+    小图3
+</a>
+
+<hr>
+
+<a href="#" class="j-fancybox-2">
+    小图0
+</a>
+<a href="#" class="j-fancybox-2">
+    小图1
+</a>
+<a href="#" class="j-fancybox-2">
+    小图2
+</a>
+<a href="#" class="j-fancybox-2">
+    小图3
+</a>
+
+<script type="text/javascript" src="js/jquery.min.1.7.2.js"></script>
+<script type="text/javascript" src="js/jquery.mousewheel.min.js"></script><!-- 鼠标滚轮（可选）-->
+<script type="text/javascript" src="js/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+    $(function () {
+        $('.j-fancybox-1').fancybox({
+            arrows: true, /* 显示上下张按钮*/
+            closeBtn: true, /* 显示关闭按钮*/
+            closeClick: false, /* 点击图片关闭*/
+            nextClick: false, /* 点击图片查看下一张*/
+            autoPlay: false, /* 自动播放*/
+            playSpeed: 3000, /* 自动播放速度*/
+            loop: true, /* 循环查看*/
+            type: 'image', /* 覆盖看图类型：'image','inline','ajax','iframe','swf','html'*/
+            //href: 'http://placehold.it/200?text=大图0',   /* 覆盖展示资源地址*/
+            //content:'asdads',   /* 覆盖展示内容*/
+            //title:'哈哈',   /* 覆盖标题*/
+            wrapCSS: 'myClass', /* 添加在.fancybox-wrap上的类*/
+            tpl: {
+                wrap: '<div class="fancybox-wrap" tabIndex="-1"><div class="fancybox-skin"><div class="fancybox-outer"><div class="fancybox-inner"></div></div></div></div>',
+                image: '<img class="fancybox-image" src="{href}" alt="" />',
+                error: '<p class="fancybox-error">The requested content cannot be loaded.<br/>Please try again later.</p>',
+                closeBtn: '<a title="Close" class="fancybox-item fancybox-close" href="javascript:;"></a>',
+                next: '<a title="Next" class="fancybox-nav fancybox-next" href="javascript:;"><span></span></a>',
+                prev: '<a title="Previous" class="fancybox-nav fancybox-prev" href="javascript:;"><span></span></a>'
+            }, /* 模板*/
+            helpers: {
+                overlay: {
+                    closeClick: true,  // if true, fancyBox will be closed when user clicks on the overlay
+                    speedOut: 200,   // duration of fadeOut animation
+                    showEarly: true,  // indicates if should be opened immediately or wait until the content is ready
+                    css: {},    // custom CSS properties
+                    locked: true   // if true, the content will be locked into overlay
+                },
+                title: {
+                    type: 'float' // 'float', 'inside', 'outside' or 'over'
+                }
+            }, /* helper*/
+            beforeClose: function () {
+            }
+        });
+
+        $('.j-fancybox-2').on('click', function () {
+            var index = $('.j-fancybox-2').index(this);
+
+            $.fancybox.open(
+                [
+                    'http://placehold.it/100?text=大图0',
+                    'http://placehold.it/110?text=大图1',
+                    'http://placehold.it/120?text=大图2',
+                    'http://placehold.it/130?text=大图3'
+                ],
+                {
+                    'type': 'image',
+                    'index': index   /* 从一组中开始位置（0起始）*/
+                }
+            );
+        });
+    });
+</script>
+</body>
+</html>
