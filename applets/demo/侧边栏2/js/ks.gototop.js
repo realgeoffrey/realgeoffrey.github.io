@@ -1,4 +1,4 @@
-﻿;(function(factory) {
+;(function(factory) {
     // CMD/SeaJS
     if(typeof define === "function") {
         define(factory);

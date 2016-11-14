@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="renderer" content="webkit">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+    <meta name="format-detection" content="telephone=no,email=no,address=no">
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <link rel="shortcut icon" type="image/ico" href="../../../favicon.ico">
+    <title>wap模板</title>
+    <link href="../../../src/css/wap.css" type="text/css" rel="stylesheet">
+    <link href="css/index.css" type="text/css" rel="stylesheet">
+</head>
+<body>
+
+<!-- 测试-->
+<nav class="m-test">
+    <a href="#" onclick="$('.j-pop').eq(0).show(); return false;">打开弹窗1</a>
+</nav>
+
+<!-- confirm-->
+<div class="m-pop-bg j-pop">
+    <i class="j-pop-close"></i>
+    <div class="m-pop-dialog">
+        <div class="body">
+            <h5>标题</h5>
+            <p>内容1<i>内容2</i>内容3</p>
+            <h6>小标题</h6>
+        </div>
+        <div class="btns">
+            <a href="#" class="j-pop-close">取消</a>
+            <a href="#">确定</a>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript" src="../../../js/zepto.min.1.2.0.js"></script>
+<script type="text/javascript">
+    $(function () {
+        $(document).on('click', '.j-pop-close', function () {
+            $(this).closest('.j-pop').hide();
+
+            return false;
+        });
+    });
+</script>
+</body>
+</html>
