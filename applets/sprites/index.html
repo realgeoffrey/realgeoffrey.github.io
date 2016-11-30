@@ -293,7 +293,7 @@
 
     function generateCss(type, filename) {
         var cssText = "",
-            commonCssText,
+//            commonCssText,
             background_size_num = background_size.checked ? 2 : 1,
             class_names = [],
             class_name, i;
@@ -326,10 +326,10 @@
             }
         }
 
-        commonCssText = class_names.join(",");
-        commonCssText += '{background:url(' + filename + ') no-repeat; ' + ((background_size_num != 1) ? 'background-size:' + (workplace_width / background_size_num) + 'px ' + (workplace_height / background_size_num) + 'px; ' : '') + 'display:inline-block}';
+//        commonCssText = class_names.join(",");
+//        commonCssText += '{background:url(' + filename + ') no-repeat; ' + ((background_size_num != 1) ? 'background-size:' + (workplace_width / background_size_num) + 'px ' + (workplace_height / background_size_num) + 'px; ' : '') + 'display:inline-block}';
 
-        cssText = commonCssText + '\n' + cssText;
+//        cssText = commonCssText + '\n' + cssText;
         return cssText;
     }
 
