@@ -102,7 +102,4 @@ a:hover {
 @media (min-width: 640px) {
     html {font-size: 20px;}
 }
-@media (orientation: landscape) {  /* 横屏*/
-
-}
 /*/wap媒体查询*/
