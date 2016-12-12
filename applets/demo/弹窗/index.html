@@ -29,7 +29,7 @@
 </head>
 <body>
 
-<a href="#" id="j-open-dialog-1">1.ue.dialog</a>
+<a href="#" id="j-open-dialog-1">1.ue.dialog（最适合自定义）</a>
 <a href="#" id="j-open-dialog-2">2.ue.dialog.custom</a>
 <a href="#" id="j-open-dialog-3">3.ue.dialog.alert</a>
 <a href="#" id="j-open-dialog-4">4.ue.dialog.confirm</a>
@@ -51,8 +51,8 @@
 
             ue.dialog({
                 id: "j-pop-1", /* 对话框的id*/
-                width: 600, /* 对话框的总宽度*/
-                height: 500, /* 对话框的总高度*/
+                width: 600, /* 对话框的总宽度，默认自适应*/
+                height: 500, /* 对话框的总高度，默认自适应*/
 
                 content: '<div style="border: 1px solid red;"><h2 class="j-drag-1">拖动我!</h2>《中心内容》<a href="#" class="j-pop-close-1">关闭按钮</a></div>', /* 对话框的内容*/
                 closeBtn: ".j-pop-close-1", /*关闭对话框按钮*/
@@ -74,8 +74,9 @@
 
                     if (confirm("关闭前回调函数，确定要关闭？")) {
                         return true;
+                    }else{
+                        return false;
                     }
-                    return false;
                 },
                 afterClose: function () {   /* 关闭弹窗之后的回调函数*/
                     console.log("关闭1号后的回调函数");
