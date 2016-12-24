@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="renderer" content="webkit">
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <link rel="shortcut icon" type="image/ico" href="../../../favicon.ico">
+    <title>marquee跑马灯</title>
+    <link href="../../../src/css/pc.css" type="text/css" rel="stylesheet">
+    <style>
+        .u-marquee-1 {
+            border: 1px solid;
+            width: 320px;
+            margin: 0 auto;
+            overflow: hidden;
+        }
+        .u-marquee-2 {
+            border: 1px solid;
+            width: 320px;
+            height: 100px;
+            margin: 0 auto;
+            overflow: hidden;
+        }
+    </style>
+</head>
+<body>
+
+<div class="u-marquee-1" id="j-marquee-1"></div>
+<div class="u-marquee-2" id="j-marquee-2"></div>
+
+<script type="text/javascript" src="js/jquery.min.1.7.2.js"></script>
+<script type="text/javascript" src="js/jquery.marquee.min.js"></script>
+<!--<script type="text/javascript" src="js/zepto.marquee.min.js"></script>-->
+<script type="text/javascript">
+    var globalObj = {
+        marqueeRefresh1: false,  //是否刷新
+        marqueeText1: '<a href="#">一二三四五六七八九十一</a>：1哈哈哈 <a href="#">一二三四五六七八九十一</a>：2哈哈哈 |<a href="#">一二三四五六七八九十一</a>：3哈哈哈 <a href="#">一二三四五六七八九十一</a>：4哈哈哈',  //刷新内容
+        marqueeRefresh2: false,  //是否刷新
+        marqueeText2: '<ul><li>1</li><li>12<br>12</li><li>123<br>123<br>123</li><li>1234<br>1234<br>1234<br>1234</li></ul>'   //刷新内容
+    };
+
+    $(function () {
+        $('#j-marquee-1')
+            .html(globalObj.marqueeText1)
+            .marquee()
+            .on('finished', function () {
+                if (globalObj.marqueeRefresh1) {
+                    globalObj.marqueeRefresh1 = false;
+
+                    $(this).marquee('destroy')
+                        .html(globalObj.marqueeText1)
+                        .marquee()
+                        .off('finished')
+                        .on('finished', arguments.callee);
+                }
+            });
+
+        $('#j-marquee-2')
+            .html(globalObj.marqueeText2)
+            .marquee({
+                direction: 'up',
+                pauseOnHover: true
+            })
+            .on('finished', function () {
+                if (globalObj.marqueeRefresh2) {
+                    globalObj.marqueeRefresh2 = false;
+
+                    $(this).marquee('destroy')
+                        .html(globalObj.marqueeText)
+                        .marquee({
+                            direction: 'up',
+                            pauseOnHover: true
+                        })
+                        .off('finished')
+                        .on('finished', arguments.callee);
+                }
+            });
+    })
+</script>
+</body>
+</html>
