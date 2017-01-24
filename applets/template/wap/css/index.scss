@@ -40,7 +40,10 @@
     background-color: #fff;
     overflow: hidden;
 
-    .body {
+    /*header {
+
+    }*/
+    section {
         padding: rem(35) 0;
 
         h5,
@@ -67,7 +70,7 @@
             line-height: rem(36);
         }
     }
-    .btns {
+    footer {
         height: rem(80);
         box-shadow: inset 0 0 0 1px #dddfe1;
         overflow: hidden;
