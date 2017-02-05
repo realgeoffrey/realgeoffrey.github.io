@@ -153,7 +153,7 @@
 
                 self.isMobile = self.isAndroid || self.isIOS;
                 self.standalone = navigator.standalone || false;
-                self.isWechat = userAgent.indexOf("MicroMessenger") >= 0;
+                self.isWechat = userAgent.indexOf('MicroMessenger') >= 0;
             };
 
             _init();
@@ -175,7 +175,7 @@
         canvas = document.createElement('canvas');
         canvas.setAttribute('id', 'j-canvas');
         document.getElementsByTagName('body')[0].appendChild(canvas);
-        document.write("<script src='js/canvas.js'><\/script>");
+        document.write('<script src="js/canvas.js"><\/script>');
     }
 </script>
 </body>
