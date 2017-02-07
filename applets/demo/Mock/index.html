@@ -33,22 +33,31 @@
     Mock.mock(new RegExp(globalUrl.url1), {
         'code': 200,
         'result': {
+            '数字': '@integer(1,100)',
+            '名字': '@ctitle(1,11)',
+            '描述': '@cparagraph(10,100)',
+            '图片': '@dataImage()',
             '数组|10-20': [{
-                '数字': '@integer(1,100)',
-                '图片': '@dataImage()',
-                '名字': '@ctitle(1,11)',
-                '描述': '@cparagraph(10,100)',
-                '网址': '@url()',
                 'id': '@increment(1)',
+                '网址': '@url()',
                 '时间': '@datetime("yyyy-MM-dd HH:mm:ss")',
                 '时间戳': '@datetime("T")',
                 '指定内容选择一个|1': [
-                    '第一个',
-                    '第二个',
-                    '第三个',
-                    '第四个'
+                    'first',
+                    'second',
+                    'third',
+                    'fourth'
                 ]
-            }]
+            }],
+            '相对路径2': {
+                '相对路径1': {
+                    'Path1': '绝对路径：@/result/数字 （不能进入数组中）',
+                    'Path2': '相对路径：@../../数字 （不能进入数组中；相对路径实现有问题……）'
+                }
+            },
+            '方法': function () {
+                return '只能取到父级的this：' + this.数字 + '（手动微笑）';
+            }
         }
     });
 </script>
