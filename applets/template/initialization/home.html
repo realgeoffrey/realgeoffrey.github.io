@@ -4,32 +4,35 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="renderer" content="webkit">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+    <meta name="format-detection" content="telephone=no,email=no,address=no">
     <meta name="keywords" content="">
     <meta name="description" content="">
-    <link rel="shortcut icon" type="image/ico" href="../../../favicon.ico">
-    <title>Mock</title>
+    <link rel="shortcut icon" type="image/ico" href="favicon.ico">
+    <title>home</title>
+    <link href="css/css-reset.css" type="text/css" rel="stylesheet">
+    <link href="css/test.css" type="text/css" rel="stylesheet">
+    <style>
+
+    </style>
     <script>
-        /* 兼容不支持console.log到alert*/
-        if (typeof console === "undefined" || console === null || typeof console.log !== "function") {
-            console = {};
-            console.log = function (msg) {
-                alert(msg);
-            };
-        }
+
     </script>
 </head>
 <body>
 
-<script type="text/javascript" src="../../../js/jquery.min.3.2.1.js"></script>
-<!--<script type="text/javascript" src="../../../js/zepto.min.1.2.0.js"></script>-->
-<script type="text/javascript" src="../../../js/mock-min.js"></script>
+<script type="text/javascript" src="js/jquery.min.3.2.1.js"></script>
+<!--<script type="text/javascript" src="js/test.js"></script>-->
 
+<!-- mock-->
+<script type="text/javascript" src="js/mock-min.js"></script>
 <script>
     var globalUrl = {
         url1: 'ur1'
     };
 </script>
 <script type="text/javascript">
+    Mock.setup({timeout: '10-1000'});
     Mock.mock(new RegExp(globalUrl.url1), {
         'code': 200,
         'result': {
@@ -90,6 +93,41 @@
             console.log('complete');
         }
     });
+</script>
+
+<!-- baiduTemplate-->
+<script id='j-tpl' type="text/template">
+    <%for(var i = 0; i < data.length; i++){%>
+    <p title="<%=data[i].b%>"><%=data[i].a%></p>
+    <%}%>
+    <p><%=info%></p>
+</script>
+<script type="text/javascript" src="js/baiduTemplate.min.js"></script>
+<script>
+    console.log(baidu.template('j-tpl', {data: [{a: '百度模板1', b: '1'}, {a: '百度模板2', b: '2'}], info: '例子'}));
+</script>
+
+<!-- worker-->
+<script>
+    var myWorker = new Worker('js/worker.js');
+
+    myWorker.addEventListener('message', function (e) {
+        console.log('主线程接受到的内容：', e);
+    }, false);
+
+    myWorker.postMessage('主线程发送内容');
+
+    //myWorker.terminate();
+</script>
+
+<!-- 移动端-->
+<script type="text/javascript" src="js/zepto.min.1.2.0.js"></script>
+<script type="text/javascript" src="js/fastclick.min.js"></script>
+<script>
+    /* 初始化*/
+    FastClick.attach(document.body);
+    document.body.addEventListener('touchstart', function () {
+    }, true);
 </script>
 </body>
 </html>
