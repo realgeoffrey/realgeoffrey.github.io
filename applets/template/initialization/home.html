@@ -1,23 +1,23 @@
 <!DOCTYPE html>
 <html lang="zh-cmn-Hans">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <meta name="renderer" content="webkit">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
-    <meta name="format-detection" content="telephone=no,email=no,address=no">
-    <meta name="keywords" content="">
-    <meta name="description" content="">
-    <link rel="shortcut icon" type="image/ico" href="favicon.ico">
-    <title>home</title>
-    <link href="css/css-reset.css" type="text/css" rel="stylesheet">
-    <link href="css/test.css" type="text/css" rel="stylesheet">
-    <style>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="renderer" content="webkit">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+  <meta name="format-detection" content="telephone=no,email=no,address=no">
+  <meta name="keywords" content="">
+  <meta name="description" content="">
+  <link rel="shortcut icon" type="image/ico" href="favicon.ico">
+  <title>home</title>
+  <link href="css/css-reset.css" type="text/css" rel="stylesheet">
+  <link href="css/test.css" type="text/css" rel="stylesheet">
+  <style>
 
-    </style>
-    <script>
+  </style>
+  <script>
 
-    </script>
+  </script>
 </head>
 <body>
 
@@ -27,107 +27,156 @@
 <!-- mock-->
 <script type="text/javascript" src="js/mock-min.js"></script>
 <script>
-    var globalUrl = {
-        url1: 'ur1'
-    };
+  var globalUrl = {
+    url1: 'ur1'
+  }
 </script>
 <script type="text/javascript">
-    Mock.setup({timeout: '10-1000'});
-    Mock.mock(new RegExp(globalUrl.url1), {
-        'code': 200,
-        'result': {
-            '数字': '@integer(1,100)',
-            '名字': '@ctitle(1,11)',
-            '描述': '@cparagraph(10,100)',
-            '图片': '@dataImage()',
-            '数组|10-20': [{
-                'id': '@increment(1)',
-                '网址': '@url()',
-                '时间': '@datetime("yyyy-MM-dd HH:mm:ss")',
-                '时间戳': '@datetime("T")',
-                '指定内容选择一个|1': [
-                    'first',
-                    'second',
-                    'third',
-                    'fourth'
-                ]
-            }],
-            '相对路径2': {
-                '相对路径1': {
-                    'Path1': '绝对路径：@/result/数字 （不能进入数组中）',
-                    'Path2': '相对路径：@../../数字 （不能进入数组中；相对路径实现有问题……）'
-                }
-            },
-            '方法': function () {
-                return '只能取到父级的this：' + this.数字 + '（手动微笑）';
-            }
+  Mock.setup({ timeout: '10-1000' })
+  Mock.mock(new RegExp(globalUrl.url1), {
+    'code': 200,
+    'result': {
+      '数字': '@integer(1,100)',
+      '名字': '@ctitle(1,11)',
+      '描述': '@cparagraph(10,100)',
+      '图片': '@dataImage()',
+      '数组|10-20': [{
+        'id': '@increment(1)',
+        '网址': '@url()',
+        '时间': '@datetime("yyyy-MM-dd HH:mm:ss")',
+        '时间戳': '@datetime("T")',
+        '指定内容选择一个|1': [
+          'first',
+          'second',
+          'third',
+          'fourth'
+        ]
+      }],
+      '相对路径2': {
+        '相对路径1': {
+          'Path1': '绝对路径：@/result/数字 （不能进入数组中）',
+          'Path2': '相对路径：@../../数字 （不能进入数组中；相对路径实现有问题……）'
         }
-    });
+      },
+      '方法': function () {
+        return '只能取到父级的this：' + this.数字 + '（手动微笑）'
+      }
+    }
+  })
 </script>
 <script>
-    /* jQuery*/
-    $.ajax({
-        url: globalUrl.url1,
-        dataType: 'json',
-        data: {}
-    }).done(function (data) {
-        console.log(data);
-    }).fail(function () {
-        console.log('fail');
-    }).always(function () {
-        console.log('always');
-    });
+  /* jQuery*/
+  $.ajax({
+    type: 'GET',
+    url: globalUrl.url1,
+    dataType: 'json',
+    data: {}
+  }).done(function (data) {
+    console.log(data)
+  }).fail(function () {
+    console.log('fail')
+  }).always(function () {
+    console.log('always')
+  })
 
-    /* Zepto*/
-    $.ajax({
-        url: globalUrl.url1,
-        dataType: 'json',
-        data: {},
-        success: function (data) {
-            console.log(data);
-        },
-        error: function () {
-            console.log('error');
-        },
-        complete: function () {
-            console.log('complete');
-        }
-    });
+  $.ajax({
+    type: 'POST',
+    url: globalUrl.url1,
+    dataType: 'json',
+    data: JSON.stringify({  // data会自动转化为"a=1&b=2"，用JSON.stringify手动转化为JSON字符串避免转化
+
+    }),
+    headers: {
+      'Content-Type': 'application/json'
+    }
+  }).done(function (data) {
+    console.log(data)
+  }).fail(function () {
+    console.log('fail')
+  }).always(function () {
+    console.log('always')
+  })
+
+  /* jQuery的deferred*/
+  function wait () {
+    var dtd = $.Deferred() // 新建一个deferred对象
+
+    console.log(dtd.state())
+
+    setTimeout(function () {
+      if (Math.random() > 0.5) {
+        console.log('wait执行完毕：成功')
+        dtd.resolve('成功信息') // 改变deferred对象的执行状态：未完成->已完成
+      } else {
+        console.log('wait执行完毕：失败')
+        dtd.reject('失败') // 改变deferred对象的执行状态：未完成->已失败
+      }
+
+      console.log(dtd.state())
+    }, 1000)
+
+    return dtd.promise() //返回的promise对象无法改变deferred对象的执行状态
+  }
+
+  $.when(wait())
+    .done(function (a) { console.log('$.when(wait())成功', a) })
+    .fail(function (a) { console.log('$.when(wait())失败', a) })
+    .always(function (a) { console.log('always', a) })
+    .then(function (a) {console.log('已成功，then获取后向下传递为其return值', a)}, function (a) {console.log('已失败，then获取后向下传递为其return值', a)})
+    .catch(function (a) {console.log('已失败，catch获取后向下传递为其return值', a)})
+
+  /* Zepto*/
+  $.ajax({
+    type: 'GET',
+    url: globalUrl.url1,
+    dataType: 'json',
+    data: {},
+    success: function (data) {
+      console.log(data)
+    },
+    error: function () {
+      console.log('error')
+    },
+    complete: function () {
+      console.log('complete')
+    }
+  })
 </script>
 
 <!-- baiduTemplate-->
 <script id='j-tpl' type="text/template">
-    <%for(var i = 0; i < data.length; i++){%>
-    <p title="<%=data[i].b%>"><%=data[i].a%></p>
-    <%}%>
-    <p><%=info%></p>
+  <%for(var i = 0; i < data.length; i++){%>
+  <p title="<%=data[i].b%>"><%=data[i].a%></p>
+  <%}%>
+  <p><%=info%></p>
 </script>
 <script type="text/javascript" src="js/baiduTemplate.min.js"></script>
 <script>
-    console.log(baidu.template('j-tpl', {data: [{a: '百度模板1', b: '1'}, {a: '百度模板2', b: '2'}], info: '例子'}));
+  // 当模版的分隔符和其他模板引擎冲突时，可以自定义分隔符
+  console.log(baidu.template('j-tpl', { data: [{ a: '百度模板1', b: '1' }, { a: '百度模板2', b: '2' }], info: '例子' }))
 </script>
 
 <!-- worker-->
 <script>
-    var myWorker = new Worker('js/worker.js');
+  var myWorker = new Worker('js/worker.js')
 
-    myWorker.addEventListener('message', function (e) {
-        console.log('主线程接受到的内容：', e);
-    }, false);
+  myWorker.addEventListener('message', function (e) {
+    console.log('主线程接受到的内容：', e)
+  }, false)
 
-    myWorker.postMessage('主线程发送内容');
+  myWorker.postMessage('主线程发送内容')
 
-    //myWorker.terminate();
+  //myWorker.terminate();
 </script>
 
 <!-- 移动端-->
 <script type="text/javascript" src="js/zepto.min.1.2.0.js"></script>
 <script type="text/javascript" src="js/fastclick.min.js"></script>
 <script>
-    /* 初始化*/
-    FastClick.attach(document.body);
-    document.body.addEventListener('touchstart', function () {
-    }, true);
+  /* 初始化*/
+  FastClick.attach(document.body)
+  document.body.addEventListener('touchstart', function () {
+  }, true)
 </script>
 </body>
 </html>
