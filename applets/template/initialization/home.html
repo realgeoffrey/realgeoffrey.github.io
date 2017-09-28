@@ -144,16 +144,28 @@
 </script>
 
 <!-- baiduTemplate-->
-<script id='j-tpl' type="text/template">
-  <%for(var i = 0; i < data.length; i++){%>
-  <p title="<%=data[i].b%>"><%=data[i].a%></p>
-  <%}%>
-  <p><%=info%></p>
+<script id='j-tpl' type="text/html">
+  <$for(var i = 0; i < data.length; i++){$>
+  <p title="<$=data[i].b$>"><$=data[i].a$></p>
+  <$}$>
+  <p><$=info$></p>
 </script>
-<script type="text/javascript" src="js/baiduTemplate.min.js"></script>
+<script type="text/javascript" src="js/ejs.min.js"></script>
 <script>
   // 当模版的分隔符和其他模板引擎冲突时，可以自定义分隔符
-  console.log(baidu.template('j-tpl', { data: [{ a: '百度模板1', b: '1' }, { a: '百度模板2', b: '2' }], info: '例子' }))
+  console.log(
+    ejs.render(
+      document.getElementById('j-tpl').innerText, // <script>：innerText和innerHTML返回一致；jQuery的.text()和.html(）返回一致
+      {
+        data: [{ a: 'ejs1', b: '1' }, { a: 'ejs2', b: '2' }],
+        info: '例子'
+      },
+      {
+        delimiter: '$', // 调整开启渲染的字符串
+        rmWhitespace: true  // 移除所有可以安全移除的空白字符，包含前导和尾后的空白字符
+      }
+    )
+  )
 </script>
 
 <!-- worker-->
