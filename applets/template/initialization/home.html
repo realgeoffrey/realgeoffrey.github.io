@@ -8,7 +8,7 @@
   <meta name="format-detection" content="telephone=no,email=no,address=no">
   <meta name="keywords" content="">
   <meta name="description" content="">
-  <link rel="shortcut icon" type="image/ico" href="favicon.ico">
+  <link rel="icon" type="image/png" href="favicon.png">
   <title>home</title>
   <link href="css/css-reset.css" type="text/css" rel="stylesheet">
   <link href="css/test.css" type="text/css" rel="stylesheet">
@@ -143,22 +143,76 @@
   })
 </script>
 
-<!-- baiduTemplate-->
+<!-- ejs-->
+<style type="text/css">
+  /*  分页*/
+  .m-Pagination {
+    margin-top: 20px;
+    display: inline-block;
+    height: 28px;
+    line-height: 28px;
+    border: 1px solid #d1dbe5;
+    font-size: 0;
+  }
+  .m-Pagination a {
+    display: inline-block;
+    width: 28px;
+    height: 28px;
+    text-align: center;
+    font-size: 13px;
+    border-right: 1px solid #d1dbe5;
+    background-color: #fff;
+    color: #48576a;
+  }
+  .m-Pagination a:hover {
+    color: #20a0ff;
+  }
+  .m-Pagination a:last-child {
+    border-right: none;
+  }
+  .m-Pagination a.active {
+    background-color: #20a0ff;
+    color: #fff;
+    pointer-events: none;
+    cursor: not-allowed;
+  }
+</style>
 <script id='j-tpl' type="text/html">
   <$for(var i = 0; i < data.length; i++){$>
   <p title="<$=data[i].b$>"><$=data[i].a$></p>
   <$}$>
   <p><$=info$></p>
+
+  <!-- 分页  -->
+  <$if(totalPage > 1){$>
+  <nav class="m-Pagination">
+    <$for(var i = 1; i <= totalPage; i++){$>
+    <$if(page === i){$>
+    <a class="active"><$=i$></a>
+    <$}else{$>
+    <a href="/?page=<$=i$>" data-page="<$=i$>"><$=i$></a>
+    <$}$>
+    <$}$>
+  </nav>
+  <$}$>
 </script>
 <script type="text/javascript" src="js/ejs.min.js"></script>
 <script>
+  /* 分页 */
+  var SIZE = 20
+
+  var page = 1
+  var total = 30
+
   // 当模版的分隔符和其他模板引擎冲突时，可以自定义分隔符
   console.log(
     ejs.render(
       document.getElementById('j-tpl').innerText, // <script>：innerText和innerHTML返回一致；jQuery的.text()和.html(）返回一致
       {
         data: [{ a: 'ejs1', b: '1' }, { a: 'ejs2', b: '2' }],
-        info: '例子'
+        info: '例子',
+        page: page,
+        totalPage: Math.ceil(total / SIZE)
       },
       {
         delimiter: '$', // 调整开启渲染的字符串

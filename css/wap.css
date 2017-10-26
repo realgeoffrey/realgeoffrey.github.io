@@ -8,7 +8,7 @@ h1,h2,h3,h4,h5,h6 {font-size:100%;font-weight:500;}
 a,ins {text-decoration:none;}
 a {background-color:transparent;}
 a:active,a:hover {outline-width:0;}
-audio,canvas,video,progress {display:inline-block;*display:inline;*zoom:1;}
+audio,canvas,video,progress {display:inline-block;}
 article,aside,details,figcaption,figure,footer,header,menu,nav,section,iframe,main {display:block;}
 summary {display:list-item;}
 template,[hidden] {display:none;}
