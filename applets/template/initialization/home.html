@@ -21,17 +21,17 @@
 </head>
 <body>
 
-<script type="text/javascript" src="js/jquery.min.3.2.1.js"></script>
-<!--<script type="text/javascript" src="js/test.js"></script>-->
+  <script type="text/javascript" src="js/jquery.min.3.2.1.js"></script>
+  <!--<script type="text/javascript" src="js/test.js"></script>-->
 
-<!-- mock-->
-<script type="text/javascript" src="js/mock-min.js"></script>
-<script>
+  <!-- mock-->
+  <script type="text/javascript" src="js/mock-min.js"></script>
+  <script>
   var globalUrl = {
     url1: 'ur1'
   }
-</script>
-<script type="text/javascript">
+  </script>
+  <script type="text/javascript">
   Mock.setup({ timeout: '10-1000' })
   Mock.mock(new RegExp(globalUrl.url1), {
     'code': 200,
@@ -63,8 +63,8 @@
       }
     }
   })
-</script>
-<script>
+  </script>
+  <script>
   /* jQuery*/
   $.ajax({
     type: 'GET',
@@ -89,6 +89,19 @@
     headers: {
       'Content-Type': 'application/json'
     }
+  }).done(function (data) {
+    console.log(data)
+  }).fail(function () {
+    console.log('fail')
+  }).always(function () {
+    console.log('always')
+  })
+
+  $.ajax({
+    url: globalUrl.url1,
+    dataType: 'jsonp',
+    jsonp: '与服务端约定的支持jsonp方法',
+    data: {}
   }).done(function (data) {
     console.log(data)
   }).fail(function () {
@@ -141,43 +154,43 @@
       console.log('complete')
     }
   })
-</script>
+  </script>
 
-<!-- ejs-->
-<style type="text/css">
-  /*  分页*/
-  .m-Pagination {
-    margin-top: 20px;
-    display: inline-block;
-    height: 28px;
-    line-height: 28px;
-    border: 1px solid #d1dbe5;
-    font-size: 0;
-  }
-  .m-Pagination a {
-    display: inline-block;
-    width: 28px;
-    height: 28px;
-    text-align: center;
-    font-size: 13px;
-    border-right: 1px solid #d1dbe5;
-    background-color: #fff;
-    color: #48576a;
-  }
-  .m-Pagination a:hover {
-    color: #20a0ff;
-  }
-  .m-Pagination a:last-child {
-    border-right: none;
-  }
-  .m-Pagination a.active {
-    background-color: #20a0ff;
-    color: #fff;
-    pointer-events: none;
-    cursor: not-allowed;
-  }
-</style>
-<script id='j-tpl' type="text/html">
+  <!-- ejs-->
+  <style type="text/css">
+    /*  分页*/
+    .m-Pagination {
+      margin-top: 20px;
+      display: inline-block;
+      height: 28px;
+      line-height: 28px;
+      border: 1px solid #d1dbe5;
+      font-size: 0;
+    }
+    .m-Pagination a {
+      display: inline-block;
+      width: 28px;
+      height: 28px;
+      text-align: center;
+      font-size: 13px;
+      border-right: 1px solid #d1dbe5;
+      background-color: #fff;
+      color: #48576a;
+    }
+    .m-Pagination a:hover {
+      color: #20a0ff;
+    }
+    .m-Pagination a:last-child {
+      border-right: none;
+    }
+    .m-Pagination a.active {
+      background-color: #20a0ff;
+      color: #fff;
+      pointer-events: none;
+      cursor: not-allowed;
+    }
+  </style>
+  <script id='j-tpl' type="text/html">
   <$for(var i = 0; i < data.length; i++){$>
   <p title="<$=data[i].b$>"><$=data[i].a$></p>
   <$}$>
@@ -195,9 +208,9 @@
     <$}$>
   </nav>
   <$}$>
-</script>
-<script type="text/javascript" src="js/ejs.min.js"></script>
-<script>
+  </script>
+  <script type="text/javascript" src="js/ejs.min.js"></script>
+  <script>
   /* 分页 */
   var SIZE = 20
 
@@ -220,10 +233,10 @@
       }
     )
   )
-</script>
+  </script>
 
-<!-- worker-->
-<script>
+  <!-- worker-->
+  <script>
   var myWorker = new Worker('js/worker.js')
 
   myWorker.addEventListener('message', function (e) {
@@ -233,16 +246,16 @@
   myWorker.postMessage('主线程发送内容')
 
   //myWorker.terminate();
-</script>
+  </script>
 
-<!-- 移动端-->
-<script type="text/javascript" src="js/zepto.min.1.2.0.js"></script>
-<script type="text/javascript" src="js/fastclick.min.js"></script>
-<script>
+  <!-- 移动端-->
+  <script type="text/javascript" src="js/zepto.min.1.2.0.js"></script>
+  <script type="text/javascript" src="js/fastclick.min.js"></script>
+  <script>
   /* 初始化*/
   FastClick.attach(document.body)
   document.body.addEventListener('touchstart', function () {
   }, true)
-</script>
+  </script>
 </body>
 </html>
