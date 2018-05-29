@@ -2,11 +2,11 @@
 ## 文档: https://hexo.io/zh-cn/docs/configuration.html
 
 # 网站
-title: 标题
-subtitle: 副标题
-description: 网站描述
-keywords: 关键字1 关键字2
-author: 作者
+title: 灰杰的博客
+subtitle: 某前端眼中的世界
+description: 前端复盘笔记。
+keywords: 博客 前端 JS JavaScript
+author: realgeoffrey
 language: zh-Hans
 timezone: Asia/Shanghai
 
