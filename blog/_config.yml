@@ -1,0 +1,94 @@
+# Hexo 配置
+## 文档: https://hexo.io/zh-cn/docs/configuration.html
+
+# 网站
+title: 标题
+subtitle: 副标题
+description: 网站描述
+keywords: 关键字1 关键字2
+author: 作者
+language: zh-Hans
+timezone: Asia/Shanghai
+
+# 网站
+## 如果网站在子目录，则设置：url为'http://yoursite.com/child'、root为'/child/'
+url: https://realgeoffrey.github.io
+root: /
+permalink: :year/:month/:title/ # 文章URL的“永久链接”格式
+permalink_defaults:
+
+# 目录
+source_dir: source
+public_dir: public
+tag_dir: tags
+archive_dir: archives
+category_dir: categories
+code_dir: downloads/code
+i18n_dir: :lang
+skip_render:
+
+# 文章
+new_post_name: :year-:month-:title.md # 新文章的文件名称
+default_layout: post  # 默认使用的布局
+titlecase: false # Transform title into titlecase
+external_link: true # 在新标签中打开链接
+filename_case: 0
+render_drafts: false  # 显示草稿
+post_asset_folder: true # 每篇文章产生一个相同名字的文件夹存放图片
+relative_link: false
+future: true
+highlight:
+  enable: true
+  line_number: true
+  auto_detect: false
+  tab_replace:
+  
+# 首页设置
+index_generator:
+  path: ''  # Root path for your blogs index page. (default = '')
+  per_page: 10  # Posts displayed per page. (0 = 关闭分页功能)
+  order_by: -date # Posts order. (Order by date descending by default)
+
+# 归档页设置
+archive_generator:
+  per_page: 10  #  (0 = 关闭分页功能)
+  yearly: true
+  monthly: true
+  daily: false
+  order_by: -date
+
+# tag页设置
+tag_generator:
+  per_page: 10  #  (0 = 关闭分页功能)
+
+# category页设置
+category_generator:
+  per_page: 10  #  (0 = 关闭分页功能)
+
+# Category & Tag
+default_category: uncategorized
+category_map:
+tag_map:
+
+# Date / Time format
+## Hexo uses Moment.js to parse and display date
+## You can customize the date format as defined in
+## http://momentjs.com/docs/#/displaying/format/
+date_format: YYYY-MM-DD
+time_format: HH:mm:ss
+
+# 分页
+per_page: 10  # 每页显示的文章量 (0 = 关闭分页功能)
+pagination_dir: page
+
+# 扩展
+## 插件: https://hexo.io/plugins/
+## 主题: https://hexo.io/themes/
+theme: next  # 当前主题名称
+
+# 开发
+## 开发文档: https://hexo.io/docs/deployment.html
+deploy:
+  type: git
+  repo: https://github.com/realgeoffrey/realgeoffrey.github.io
+  branch: master
