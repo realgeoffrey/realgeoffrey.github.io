@@ -90,5 +90,5 @@ theme: next  # 当前主题名称
 ## 开发文档: https://hexo.io/docs/deployment.html
 deploy:
   type: git
-  repo: https://github.com/realgeoffrey/realgeoffrey.github.io
+  repo: git@realgeoffrey.github.com:realgeoffrey/realgeoffrey.github.io.git
   branch: master
