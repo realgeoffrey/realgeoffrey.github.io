@@ -1,7 +1,14 @@
 # realgeoffrey.github.io
-Blog by [Hexo](https://github.com/hexojs/hexo) + [next](https://github.com/iissnan/hexo-theme-next).
+Powered by [Hexo](https://github.com/hexojs/hexo) + [next](https://github.com/iissnan/hexo-theme-next), hosted by GitHub Pages.
 
 ### Hexo的命令
+><details>
+><summary>约定</summary>
+>
+>1. `[内容]`选填；`<内容>`必填。
+>2. 以下命令需要进入`blog`路径中进行（`cd blog`）。
+></details>
+
 1. 新建一篇（发布/草稿）文章
 
     ```bash
@@ -23,7 +30,7 @@ Blog by [Hexo](https://github.com/hexojs/hexo) + [next](https://github.com/iissn
     ```bash
     hexo g -d   # 或：hexo d -g
     
-    # 需要输入一次github的账户名、密码
+    # 可能需要输入github的账户名、密码
     ```
 4. 清理缓存（发布前后或本地服务器看不到更新内容时）
 
