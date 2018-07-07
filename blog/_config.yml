@@ -7,12 +7,12 @@ subtitle: 某前端眼中的世界
 description: 前端复盘笔记。
 keywords: 博客 前端 JS JavaScript
 author: realgeoffrey
-language: zh-Hans
+language: zh-CN
 timezone: Asia/Shanghai
 
 # 网站
 ## 如果网站在子目录，则设置：url为'http://yoursite.com/child'、root为'/child/'
-url: https://realgeoffrey.github.io
+url: https://realgeoffrey.com
 root: /
 permalink: :year/:month/:title/ # 文章URL的“永久链接”格式
 permalink_defaults:
@@ -20,7 +20,7 @@ permalink_defaults:
 # 目录
 source_dir: source
 public_dir: public
-tag_dir: tags
+tag_dir:
 archive_dir: archives
 category_dir: categories
 code_dir: downloads/code
