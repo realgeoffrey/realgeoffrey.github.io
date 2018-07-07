@@ -1,6 +1,5 @@
 .posts-expand .post-meta {
-  //margin: 3px 0 60px 0;
-  margin: 3px 0 30px 0;
+  margin: 3px 0 60px 0;
   color: $grey-dark;
   font-family: $font-family-posts;
   font-size: 12px;
@@ -17,10 +16,15 @@
     font-size: 14px;
     margin-top: 2px;
   }
+
+  time {
+    border-bottom: 1px dashed $grey-dark;
+    cursor: help;
+  }
 }
 
-.post-wordcount {
-  if !hexo-config('post_wordcount.separated_meta') { display: inline-block; }
+.post-symbolscount {
+  if !hexo-config('symbols_count_time.separated_meta') { display: inline-block; }
 }
 
 .post-meta-divider {
@@ -43,8 +47,4 @@
   +mobile() {
     display: none;
   }
-}
-
-.posts-expand .post-comments-count {
-  +mobile() { display: none; }
 }
