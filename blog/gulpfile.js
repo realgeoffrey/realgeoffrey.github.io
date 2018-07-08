@@ -1,9 +1,9 @@
-var gulp = require('gulp')
-var minifycss = require('gulp-minify-css')
-var uglify = require('gulp-uglify')
-var htmlmin = require('gulp-htmlmin')
-var htmlclean = require('gulp-htmlclean')
-var imagemin = require('gulp-imagemin')
+const gulp = require('gulp')
+const cleanCSS = require('gulp-clean-css')
+const uglify = require('gulp-uglify')
+const htmlmin = require('gulp-htmlmin')
+const htmlclean = require('gulp-htmlclean')
+const imagemin = require('gulp-imagemin')
 
 // 压缩html
 gulp.task('minify-html', function () {
@@ -21,9 +21,7 @@ gulp.task('minify-html', function () {
 // 压缩css
 gulp.task('minify-css', function () {
   return gulp.src('./public/**/*.css')
-    .pipe(minifycss({
-      compatibility: 'ie8'
-    }))
+    .pipe(cleanCSS())
     .pipe(gulp.dest('./public'))
 })
 
