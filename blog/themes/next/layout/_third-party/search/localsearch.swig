@@ -149,7 +149,7 @@
 
                   // merge hits into slices
 
-                  function mergeIntoSlice(text, start, end, index) {
+                  var mergeIntoSlice = function mergeIntoSlice (text, start, end, index) {
                     var item = index[index.length - 1];
                     var position = item.position;
                     var word = item.word;
@@ -231,7 +231,7 @@
 
                   // highlight title and content
 
-                  function highlightKeyword(text, slice) {
+                  var highlightKeyword = function highlightKeyword(text, slice) {
                     var result = '';
                     var prevEnd = slice.start;
                     slice.hits.forEach(function (hit) {
