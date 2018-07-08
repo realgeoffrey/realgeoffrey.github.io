@@ -7,7 +7,6 @@
   },
   "scripts": {
     "publish": "hexo clean && hexo g && npm run gulp && hexo d",
-    "hexo": "hexo clean && hexo g && npm run gulp && hexo d",
     "gulp": "gulp"
   },
   "dependencies": {
