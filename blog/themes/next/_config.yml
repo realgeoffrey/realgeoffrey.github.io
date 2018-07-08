@@ -359,7 +359,7 @@ custom_logo:
 highlight_theme: normal
 
 # Enable "cheers" for archive page.
-cheers_enabled: true
+cheers_enabled: false
 
 # Manual define the max content width
 # !!Only available for Gemini Scheme currently
