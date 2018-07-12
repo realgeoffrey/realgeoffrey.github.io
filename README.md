@@ -1,5 +1,5 @@
 # realgeoffrey.github.io
-Powered by [Hexo](https://github.com/hexojs/hexo) + [next](https://github.com/iissnan/hexo-theme-next), hosted by GitHub Pages.
+Powered by [Hexo](https://github.com/hexojs/hexo) + [next](https://github.com/theme-next/hexo-theme-next), hosted by GitHub Pages.
 
 ### Hexo的命令
 ><details>
@@ -31,7 +31,7 @@ Powered by [Hexo](https://github.com/hexojs/hexo) + [next](https://github.com/ii
     hexo g -d   # 或：hexo d -g
     
     # 可能需要输入github的账户名、密码
-    # 也可以用 npm run publish
+    # 或用压缩发布：npm run publish
     ```
 4. 清理缓存（发布前后或本地服务器看不到更新内容时）
 
