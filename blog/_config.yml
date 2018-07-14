@@ -86,6 +86,10 @@ pagination_dir: page
 ## 主题: https://hexo.io/themes/
 theme: next  # 当前主题名称
 
+# 服务器
+server:
+  compress: true  # 开启压缩（针对 hexo-browsersync 对某些文章无效）
+
 # 开发
 ## 开发文档: https://hexo.io/docs/deployment.html
 deploy:
