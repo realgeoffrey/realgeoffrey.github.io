@@ -11,6 +11,7 @@
   },
   "dependencies": {
     "hexo": "^3.7.1",
+    "hexo-blog-encrypt": "^2.0.8",
     "hexo-browsersync": "^0.3.0",
     "hexo-deployer-git": "^0.3.1",
     "hexo-generator-archive": "^0.1.5",
@@ -20,13 +21,13 @@
     "hexo-renderer-ejs": "^0.3.1",
     "hexo-renderer-marked": "^0.3.2",
     "hexo-renderer-stylus": "^0.3.3",
-    "hexo-server": "^0.3.2"
+    "hexo-server": "^0.3.3"
   },
   "devDependencies": {
     "gulp": "^3.9.1",
-    "gulp-clean-css": "^3.9.4",
-    "gulp-htmlmin": "^4.0.0",
+    "gulp-clean-css": "^3.10.0",
+    "gulp-htmlmin": "^5.0.1",
     "gulp-imagemin": "^4.1.0",
-    "gulp-uglify": "^3.0.0"
+    "gulp-uglify": "^3.0.1"
   }
 }
