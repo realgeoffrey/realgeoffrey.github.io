@@ -6,7 +6,7 @@
     "version": "3.8.0"
   },
   "scripts": {
-    "publish": "hexo clean && hexo g && npm run gulp && hexo d",
+    "publish": "hexo clean && hexo g && npm run gulp && hexo d && hexo clean",
     "gulp": "gulp"
   },
   "dependencies": {
