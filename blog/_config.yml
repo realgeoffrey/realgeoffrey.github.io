@@ -101,5 +101,5 @@ server:
 ## 开发文档: https://hexo.io/docs/deployment.html
 deploy:
   type: git
-  repo: git@realgeoffrey.github.com:realgeoffrey/realgeoffrey.github.io.git
-  branch: master
+  repo: git@realgeoffrey.github.com:realgeoffrey/blog.git
+  branch: gh-pages
