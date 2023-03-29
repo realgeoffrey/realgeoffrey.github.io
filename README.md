@@ -2,8 +2,7 @@
 
 静态资源整合处。
 
-1. [blog2](https://github.com/realgeoffrey/blog2)
-1. [blog1](https://github.com/realgeoffrey/blog1)
+1. [blog](https://github.com/realgeoffrey/blog)
 1. [react-time-countdown](https://github.com/realgeoffrey/react-time-countdown)
 1. [vue-timer-countdown](https://github.com/realgeoffrey/vue-timer-countdown)
 1. [vue-observer-directive](https://github.com/realgeoffrey/vue-observer-directive)
