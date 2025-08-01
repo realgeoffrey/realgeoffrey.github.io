@@ -2,9 +2,9 @@
 
 静态资源整合处。
 
-1. [fabric-demo](https://github.com/fabric-demo/)
+1. [fabric-demo](https://github.com/realgeoffrey/fabric-demo/)
 1. [blog](https://github.com/realgeoffrey/blog)
-1. [scaffolding-node](https://github.com/scaffolding-node/)
+1. [scaffolding-node](https://github.com/realgeoffrey/scaffolding-node/)
 1. [react-time-countdown](https://github.com/realgeoffrey/react-time-countdown)
 1. [vue-timer-countdown](https://github.com/realgeoffrey/vue-timer-countdown)
 1. [vue-observer-directive](https://github.com/realgeoffrey/vue-observer-directive)
